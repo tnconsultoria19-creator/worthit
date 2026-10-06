@@ -1,0 +1,8 @@
+{
+  "name": "Site Acquisition Angola — Aquisição de Sites",
+  "description": "Identificamos, avaliamos e asseguramos locais estratégicos para telecomunicações e expansão empresarial em Angola.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
