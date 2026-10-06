@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS clients(id TEXT PRIMARY KEY,name TEXT NOT NULL,industry TEXT,contact TEXT,email TEXT,status TEXT,owner TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS leads(id TEXT PRIMARY KEY,name TEXT,company TEXT,source TEXT,priority TEXT,status TEXT,owner TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS site_requests(id TEXT PRIMARY KEY,client TEXT,region TEXT,municipality TEXT,sites INTEGER,status TEXT,assigned TEXT,created_at TEXT);
+CREATE TABLE IF NOT EXISTS projects(id TEXT PRIMARY KEY,name TEXT,client TEXT,province TEXT,sites INTEGER,status TEXT,progress INTEGER,owner TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS sites(id TEXT PRIMARY KEY,code TEXT,project TEXT,province TEXT,municipality TEXT,status TEXT,owner TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,title TEXT,due TEXT,assignee TEXT,priority TEXT,status TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS documents(id TEXT PRIMARY KEY,name TEXT,category TEXT,type TEXT,url TEXT,visibility TEXT,status TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS packages(id TEXT PRIMARY KEY,name TEXT,description TEXT,price TEXT,status TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,name TEXT,email TEXT,role TEXT,status TEXT,last_login TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS audit(id TEXT PRIMARY KEY,action TEXT,user TEXT,module TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_requests_status ON site_requests(status);
+CREATE INDEX IF NOT EXISTS idx_sites_province ON sites(province);
+CREATE INDEX IF NOT EXISTS idx_projects_client ON projects(client);
