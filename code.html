@@ -24,7 +24,7 @@
             brandBorder: '#E5E5E5',
           },
           fontFamily: {
-            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            serif: ['"Playfair Display"', '', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
           }
         }
@@ -34,7 +34,7 @@
 <!-- Custom Styles for precise typographic and subtle layout fidelity -->
 <style data-purpose="custom-typography">
     .font-editorial {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: "Playfair Display";
       letter-spacing: -0.015em;
     }
     .tracking-widest-subtle {
@@ -61,7 +61,7 @@
   /* Lock typography to the supplied prototype rather than relying on Tailwind's
      generated font utilities or browser fallbacks. */
   html, body {
-    font-family: "Plus Jakarta Sans", Inter, sans-serif !important;
+    font-family: "Plus Jakarta Sans";
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -69,13 +69,13 @@
 
   body, body.font-sans,
   button, input, select, textarea {
-    font-family: "Plus Jakarta Sans", Inter, sans-serif !important;
+    font-family: "Plus Jakarta Sans";
   }
 
   h1, h2, h3, h4,
   .font-serif,
   .font-editorial {
-    font-family: "Playfair Display", Georgia, serif !important;
+    font-family: "Playfair Display";
   }
 </style>
 
