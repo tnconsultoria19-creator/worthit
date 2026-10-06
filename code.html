@@ -56,6 +56,29 @@
       transform: scale(1.03);
     }
   </style>
+
+<style data-purpose="prototype-font-lock">
+  /* Lock typography to the supplied prototype rather than relying on Tailwind's
+     generated font utilities or browser fallbacks. */
+  html, body {
+    font-family: "Plus Jakarta Sans", Inter, sans-serif !important;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body, body.font-sans,
+  button, input, select, textarea {
+    font-family: "Plus Jakarta Sans", Inter, sans-serif !important;
+  }
+
+  h1, h2, h3, h4,
+  .font-serif,
+  .font-editorial {
+    font-family: "Playfair Display", Georgia, serif !important;
+  }
+</style>
+
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
 <!-- BEGIN: HeroSection -->
