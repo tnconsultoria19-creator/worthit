@@ -1,0 +1,7 @@
+{ 
+  "name": "site-acquisition-angola-api",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "d1_databases": [{"binding":"DB","database_name":"site-acquisition-db","database_id":"REPLACE_WITH_D1_ID"}],
+  "r2_buckets": [{"binding":"ASSETS","bucket_name":"site-acquisition-assets"}]
+}
