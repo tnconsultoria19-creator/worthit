@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <title>Admin Sign In | WorthIt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1e1e1e; --muted:#6f6a63; --paper:#f4f2ee; --line:#e4dfd6; --beige:#b49a70; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--paper); color:var(--ink); font-family:"Plus Jakarta Sans",Arial,sans-serif; display:grid; place-items:center; padding:28px 16px; }
+    .login-shell { width:min(480px,100%); background:#fff; border:1px solid var(--line); }
+    .login-hero { min-height:190px; display:flex; flex-direction:column; justify-content:flex-end; padding:28px 32px; background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+    .login-hero:after { content:""; position:absolute; width:190px; height:190px; border:1px solid rgba(255,255,255,.15); border-radius:50%; right:-60px; top:-75px; box-shadow:0 0 0 22px rgba(255,255,255,.035),0 0 0 45px rgba(255,255,255,.025); }
+    .wordmark { position:relative; z-index:1; font-size:24px; font-weight:700; letter-spacing:-.07em; }
+    .wordmark span { color:#d5bc92; }
+    .eyebrow { position:relative; z-index:1; margin:22px 0 9px; font-size:10px; font-weight:700; letter-spacing:.16em; color:#d5bc92; text-transform:uppercase; }
+    h1 { position:relative; z-index:1; margin:0; max-width:340px; font-family:"Playfair Display",Georgia,serif; font-weight:500; font-size:32px; line-height:1.12; }
+    .login-body { padding:30px 32px 28px; }
+    .intro { margin:0 0 25px; color:#6b665f; font-size:13px; line-height:1.7; }
+    label { display:block; margin:0 0 7px; color:#3d3934; font-size:11px; font-weight:700; letter-spacing:.04em; }
+    .field { margin-bottom:17px; }
+    input { display:block; width:100%; height:46px; padding:0 12px; border:1px solid #ded9d1; border-radius:0; background:#fff; color:#1e1e1e; font:13px "Plus Jakarta Sans",Arial,sans-serif; outline:none; }
+    input:focus { border-color:#8f7957; box-shadow:0 0 0 2px rgba(180,154,112,.16); }
+    .submit { width:100%; min-height:47px; margin-top:5px; display:flex; align-items:center; justify-content:center; gap:12px; border:1px solid var(--ink); background:var(--ink); color:#fff; cursor:pointer; font:700 10px "Plus Jakarta Sans",Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    .submit:hover { background:#3b3b3b; }
+    .submit:disabled { opacity:.65; cursor:wait; }
+    .status { display:none; margin:16px 0 0; padding:12px 13px; border:1px solid #e4d7c3; background:#faf6ee; color:#5b4a2e; font-size:12px; line-height:1.55; }
+    .status.show { display:block; }
+    .status.error { border-color:#ead0cb; background:#fbf2f0; color:#84392f; }
+    .login-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid #eeebe5; padding:17px 32px; color:#77716a; font-size:10px; }
+    .login-footer a { color:#5f4b2d; text-decoration:none; font-weight:700; }
+    .login-footer a:hover { text-decoration:underline; text-underline-offset:4px; }
+    @media(max-width:480px) { .login-hero { padding:24px; min-height:175px; } h1 { font-size:29px; } .login-body { padding:24px; } .login-footer { padding:16px 24px; } }
+  </style>
+  <script>
+    if (location.hostname.endsWith("github.io")) {
+      location.replace("https://worthit.tnconsultoria19.workers.dev/admin.html" + location.search);
+    }
+  </script>
+</head>
+<body>
+  <main class="login-shell">
+    <header class="login-hero">
+      <a class="wordmark" href="index.html" aria-label="WorthIt home" style="color:#fff;text-decoration:none">Worth<span>It</span></a>
+      <p class="eyebrow">Acesso restrito · WorthIt</p>
+      <h1>Admin Sign In</h1>
+    </header>
+    <section class="login-body">
+      <p class="intro">Inicie sessão para aceder ao portal administrativo e gerir pedidos, clientes e projectos.</p>
+      <form id="adminLoginForm" novalidate>
+        <div class="field">
+          <label for="adminEmail">EMAIL DO ADMINISTRADOR</label>
+          <input id="adminEmail" name="email" type="email" autocomplete="username" placeholder="nome@empresa.com" required>
+        </div>
+        <div class="field">
+          <label for="adminPassword">PALAVRA-PASSE</label>
+          <input id="adminPassword" name="password" type="password" autocomplete="current-password" placeholder="Introduza a palavra-passe" required>
+        </div>
+        <button class="submit" id="adminSubmit" type="submit">Entrar no portal <span aria-hidden="true">↗</span></button>
+        <p class="status" id="adminStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <footer class="login-footer">
+      <a href="index.html">← Voltar ao website</a>
+      <span>WORTHIT · ANGOLA</span>
+    </footer>
+  </main>
+  <script>
+    (() => {
+      const form = document.getElementById("adminLoginForm");
+      const status = document.getElementById("adminStatus");
+      const submit = document.getElementById("adminSubmit");
+      const showMessage = (message, isError = true) => {
+        status.textContent = message;
+        status.classList.add("show");
+        status.classList.toggle("error", isError);
+      };
+
+      fetch("/api/admin/session", { credentials: "same-origin", cache: "no-store" })
+        .then(async response => {
+          if (!response.ok) return null;
+          const user = await response.json();
+          if (user && user.authenticated) location.replace("/dashboard.html?view=overview");
+          return user;
+        })
+        .catch(() => null);
+
+      form.addEventListener("submit", async event => {
+        event.preventDefault();
+        status.className = "status";
+        const email = document.getElementById("adminEmail").value.trim();
+        const password = document.getElementById("adminPassword").value;
+        if (!email || !password) {
+          showMessage("Introduza o email e a palavra-passe do administrador.");
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = "A verificar...";
+        try {
+          const response = await fetch("/api/admin/login", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            showMessage(data.error || "Não foi possível iniciar sessão. Verifique as credenciais ou a configuração de acesso.");
+            return;
+          }
+          location.replace("/dashboard.html?view=overview");
+        } catch (error) {
+          showMessage("Não foi possível contactar o serviço de autenticação. Tente novamente.");
+        } finally {
+          submit.disabled = false;
+          submit.innerHTML = 'Entrar no portal <span aria-hidden="true">↗</span>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
