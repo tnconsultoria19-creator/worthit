@@ -974,6 +974,10 @@ function viewSettings(role) {
 function renderInternalPortal(role, activeView) {
   const root = document.getElementById('dashboardRoot');
   if (!root) return;
+  const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
+  const demoBanner = demoMode
+    ? '<div class="demo-mode-banner" role="status"><strong>MODO DE DEMONSTRAÇÃO</strong><span>Dados de exemplo e alterações apenas temporárias neste navegador. Os pedidos reais e a base de dados estão protegidos.</span></div>'
+    : '';
 
   const navItems = [
     ["overview", "Visão Geral"],
@@ -1068,6 +1072,7 @@ function renderInternalPortal(role, activeView) {
           </div>
         </header>
 
+        ${demoBanner}
         <section class="content">
           ${viewHtml}
         </section>
@@ -1075,11 +1080,14 @@ function renderInternalPortal(role, activeView) {
     </div>
   `;
 
+  const clientPortalLink = document.getElementById('linkClientPortal');
+  if (clientPortalLink && demoMode) clientPortalLink.href = 'client.html?demo=1';
+
   // Attach navigation listeners
   document.querySelectorAll('[data-nav]').forEach(btn => {
     btn.onclick = () => {
       const target = btn.dataset.nav;
-      history.pushState(null, '', `dashboard.html?view=${target}&role=${encodeURIComponent(role)}`);
+      history.pushState(null, '', `dashboard.html?view=${target}&role=${encodeURIComponent(role)}${demoMode ? '&demo=1' : ''}`);
       renderInternalPortal(role, target);
     };
   });
@@ -1089,7 +1097,7 @@ function renderInternalPortal(role, activeView) {
   if (roleSel) {
     roleSel.onchange = (e) => {
       const newRole = e.target.value;
-      history.pushState(null, '', `dashboard.html?view=${activeView}&role=${encodeURIComponent(newRole)}`);
+      history.pushState(null, '', `dashboard.html?view=${activeView}&role=${encodeURIComponent(newRole)}${demoMode ? '&demo=1' : ''}`);
       renderInternalPortal(newRole, activeView);
     };
   }
@@ -1143,7 +1151,14 @@ function renderInternalPortal(role, activeView) {
     };
   }
 
-  if (activeView === 'service-requests') loadServiceRequests();
+  if (activeView === 'service-requests') {
+    if (demoMode) {
+      const requestTarget = document.getElementById('serviceRequestsContent');
+      if (requestTarget) requestTarget.innerHTML = '<div class="empty">A caixa de pedidos reais não está disponível no modo de demonstração.</div>';
+    } else {
+      loadServiceRequests();
+    }
+  }
 }
 
 // -------------------------------------------------------------
@@ -2293,8 +2308,15 @@ function wireEntityModals(role, activeView) {
 // INITIALIZATION ON DOM LOAD
 // -------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', async () => {
-  // The public GitHub Pages mirror must not act as an admin login bypass.
+  // Public demo mode is isolated from authenticated, D1-backed administration.
   if (document.getElementById('dashboardRoot')) {
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view') || 'overview';
+    if (params.get('demo') === '1') {
+      renderInternalPortal('Master Admin', view);
+      return;
+    }
+
     if (window.location.hostname.endsWith('github.io')) {
       window.location.replace('https://worthit.tnconsultoria19.workers.dev/admin.html');
       return;
@@ -2309,8 +2331,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (!response.ok) throw new Error('Admin session required');
       const session = await response.json();
       if (!session || !session.authenticated) throw new Error('Admin session required');
-      const params = new URLSearchParams(window.location.search);
-      const view = params.get('view') || 'overview';
       renderInternalPortal(session.role || 'Master Admin', view);
     } catch {
       window.location.replace('/admin.html');
@@ -2318,7 +2338,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // The client portal keeps its own entry flow.
   if (document.getElementById('clientRoot')) {
     const params = new URLSearchParams(window.location.search);
     const view = params.get('view') || 'overview';
