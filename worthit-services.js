@@ -195,7 +195,7 @@
     requestSubmit.disabled = true;
     requestSubmit.textContent = "A enviar...";
     try {
-      const response = await fetch("/api/service-requests", {
+      const response = await fetch("https://worthit.tnconsultoria19.workers.dev/api/service-requests", {
         method: "POST",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
