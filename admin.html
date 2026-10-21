@@ -50,7 +50,7 @@
       <h1>Admin Sign In</h1>
     </header>
     <section class="login-body">
-      <p class="intro">Inicie sessão para aceder ao portal administrativo e gerir pedidos, clientes e projectos.</p>
+      <p class="intro">Modo de demonstração temporário. Introduza qualquer email e palavra-passe para explorar o portal com dados de exemplo. Não é uma sessão administrativa real.</p>
       <form id="adminLoginForm" novalidate>
         <div class="field">
           <label for="adminEmail">EMAIL DO ADMINISTRADOR</label>
@@ -89,36 +89,19 @@
         })
         .catch(() => null);
 
-      form.addEventListener("submit", async event => {
+      form.addEventListener("submit", event => {
         event.preventDefault();
         status.className = "status";
         const email = document.getElementById("adminEmail").value.trim();
         const password = document.getElementById("adminPassword").value;
         if (!email || !password) {
-          showMessage("Introduza o email e a palavra-passe do administrador.");
+          showMessage("Introduza qualquer email e uma palavra-passe para continuar para a demonstração.");
           return;
         }
         submit.disabled = true;
-        submit.textContent = "A verificar...";
-        try {
-          const response = await fetch("/api/admin/login", {
-            method: "POST",
-            credentials: "same-origin",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-          });
-          const data = await response.json().catch(() => ({}));
-          if (!response.ok) {
-            showMessage(data.error || "Não foi possível iniciar sessão. Verifique as credenciais ou a configuração de acesso.");
-            return;
-          }
-          location.replace("/dashboard.html?view=overview");
-        } catch (error) {
-          showMessage("Não foi possível contactar o serviço de autenticação. Tente novamente.");
-        } finally {
-          submit.disabled = false;
-          submit.innerHTML = 'Entrar no portal <span aria-hidden="true">↗</span>';
-        }
+        submit.textContent = "A abrir demonstração...";
+        showMessage("A abrir o portal de demonstração. Os dados e alterações são temporários neste navegador.", false);
+        location.replace("/dashboard.html?view=overview&demo=1");
       });
     })();
   </script>
