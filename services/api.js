@@ -540,9 +540,25 @@ export const INITIAL_DATA = {
 };
 
 /**
- * Storage initialization and persistence
+ * Storage initialization and persistence.
+ * Demo mode uses a separate in-memory copy; it never reads or writes localStorage.
  */
+let demoStorage = null;
+
+function isDemoMode() {
+  try {
+    return typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).get("demo") === "1";
+  } catch {
+    return false;
+  }
+}
+
 function getStorage() {
+  if (isDemoMode()) {
+    if (!demoStorage) demoStorage = structuredClone(INITIAL_DATA);
+    return structuredClone(demoStorage);
+  }
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
@@ -560,6 +576,10 @@ function getStorage() {
 }
 
 function saveStorage(data) {
+  if (isDemoMode()) {
+    demoStorage = structuredClone(data);
+    return;
+  }
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
