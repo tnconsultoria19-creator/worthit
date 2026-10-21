@@ -293,3 +293,134 @@ section[data-purpose="worthit-process"] {
     font-size: 12px !important;
   }
 }
+
+
+/* Mobile hero: place the navigation first, then the message, CTA and hero image. */
+.worthit-mobile-nav,
+.worthit-mobile-hero-image { display:none; }
+
+@media (max-width:1023px) {
+  header[data-purpose="hero-container"] {
+    min-height:0 !important;
+    height:auto !important;
+    flex-direction:column !important;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+    width:100%;
+    padding:7px 12px;
+    background:#f4f2ee;
+    border-bottom:1px solid #dfd9cf;
+    position:relative;
+    z-index:30;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav a {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:38px;
+    padding:7px 5px;
+    color:#282722;
+    font-family:"Plus Jakarta Sans",Arial,sans-serif;
+    font-size:9px;
+    line-height:1.25;
+    font-weight:700;
+    letter-spacing:.045em;
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav a:nth-child(odd) {
+    border-right:1px solid #ded8ce;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav a:nth-child(n+3) {
+    border-top:1px solid #ded8ce;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav .worthit-mobile-admin {
+    color:#fff !important;
+    background:#1e1e1e;
+    margin:3px 2px;
+    border:0;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-left {
+    padding:23px 22px 0 !important;
+    height:auto !important;
+    justify-content:flex-start !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-copy {
+    margin:25px 0 0 !important;
+    max-width:100% !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-copy h1 {
+    margin-bottom:20px !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-copy p {
+    margin-bottom:23px !important;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-hero-image {
+    display:block !important;
+    width:calc(100% + 44px);
+    height:clamp(220px,70vw,330px);
+    margin:19px -22px 0;
+    overflow:hidden;
+    background:#e9e5dc;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-hero-image img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-right {
+    display:none !important;
+  }
+}
+
+/* Compact four-service strip on phones: two small icons per row. */
+@media (max-width:640px) {
+  section[data-purpose="services-overview"].worthit-service-strip {
+    padding-top:22px !important;
+    padding-bottom:22px !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip > div {
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip > div > div {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:9px !important;
+    text-align:center !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip > div > div > div {
+    min-width:0;
+    padding:12px 6px 10px !important;
+    border:1px solid #393939 !important;
+    border-top:1px solid #393939 !important;
+    border-right:1px solid #393939 !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip > div > div > div > div {
+    width:38px !important;
+    height:38px !important;
+    margin-bottom:8px !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip svg {
+    width:18px !important;
+    height:18px !important;
+  }
+  section[data-purpose="services-overview"].worthit-service-strip h3 {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:25px;
+    margin:0 !important;
+    padding:0 2px;
+    font-size:9px !important;
+    line-height:1.35 !important;
+    letter-spacing:.035em !important;
+    overflow-wrap:anywhere;
+  }
+}
