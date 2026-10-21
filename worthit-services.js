@@ -34,7 +34,7 @@
     },
     {
       id: "agriculture", number: "05", category: "AGRICULTURA", title: "Agricultura & Agro-Sourcing",
-      image: "https://images.openai.com/static-rsc-4/UNLw5pFt4qL4zX?purpose=inline",
+      image: "https://images.openai.com/static-rsc-4/UNLw5pFt4qL4kcFxqQuvnxIZwpIWhvVflI1BO7DAyH-Bq8pznCYjqwP5xVfVzPT43hR9YCsnhXC9vl3BS0OUZlxHQiVocm0Jf-N9YBexg-CyETfAlQmOVy0Mc2-v9L9ssQ2hmWYnNM6Moaojy0srhAGpo71Wi0iXJdsNwVTt0rQo?purpose=inline",
       alt: "Insumos e fornecimentos agrícolas", intro: "Facilitamos o acesso a recursos agrícolas, insumos, compradores, fornecedores e oportunidades comerciais.",
       detail: "Clarificamos as necessidades do projecto e pesquisamos potenciais fontes de fornecimento ou parceiros adequados.",
       bullets: ["Equipamentos e insumos agrícolas", "Pesquisa de terrenos e instalações agrícolas", "Sistemas de irrigação e fornecimentos", "Identificação de compradores e parceiros de processamento"]
