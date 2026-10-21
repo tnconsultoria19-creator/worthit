@@ -3,6 +3,15 @@ const PUBLIC_SITE_ORIGIN = "https://tnconsultoria19-creator.github.io/worthit/";
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    const adminSession = await readAdminSession(req, env);
+
+    // Protect the internal dashboard. The public website remains accessible without login.
+    if (url.pathname === "/dashboard.html" && !adminSession) {
+      return Response.redirect(new URL("/admin.html", url).toString(), 302);
+    }
+    if (url.pathname === "/admin.html" && adminSession) {
+      return Response.redirect(new URL("/dashboard.html?view=overview", url).toString(), 302);
+    }
 
     // Serve public pages and their static files from the published GitHub Pages site.
     // Keep the API on this Worker so existing D1/R2 services remain available.
@@ -54,11 +63,53 @@ export default {
       "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS"
     };
     if (req.method === "OPTIONS") return new Response(null, { headers: h });
-    const email = req.headers.get("CF-Access-Authenticated-User-Email");
+    const email = adminSession?.email || req.headers.get("CF-Access-Authenticated-User-Email");
     const admin = (env.ADMIN_EMAILS || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean);
-    const role = admin.includes((email || "").toLowerCase()) ? "Master Admin" : "Staff";
+    const role = adminSession || admin.includes((email || "").toLowerCase()) ? "Master Admin" : "Staff";
 
     try {
+      if (url.pathname === "/api/admin/login" && req.method === "POST") {
+        if (!env.ADMIN_EMAILS || !env.ADMIN_PASSWORD || !env.ADMIN_SESSION_SECRET) {
+          return j({
+            error: "O acesso administrativo ainda não foi configurado. Defina ADMIN_EMAILS, ADMIN_PASSWORD e ADMIN_SESSION_SECRET nos secrets do Worker."
+          }, h, 503);
+        }
+        let credentials;
+        try {
+          credentials = await req.json();
+        } catch {
+          return j({ error: "Pedido de autenticação inválido." }, h, 400);
+        }
+        const allowedEmails = env.ADMIN_EMAILS.split(",").map(v => v.trim().toLowerCase()).filter(Boolean);
+        const loginEmail = String(credentials.email || "").trim().toLowerCase();
+        const loginPassword = String(credentials.password || "");
+        if (!loginEmail || !loginPassword ||
+            !allowedEmails.includes(loginEmail) ||
+            loginPassword !== env.ADMIN_PASSWORD) {
+          return j({ error: "Email ou palavra-passe inválidos." }, h, 401);
+        }
+        const token = await createAdminSession(loginEmail, env);
+        const loginHeaders = {
+          ...h,
+          "Set-Cookie": "worthit_admin_session=" + token + "; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=28800",
+          "Cache-Control": "no-store"
+        };
+        return j({ ok: true, email: loginEmail, role: "Master Admin" }, loginHeaders);
+      }
+
+      if (url.pathname === "/api/admin/session" && req.method === "GET") {
+        if (!adminSession) return j({ authenticated: false }, { ...h, "Cache-Control": "no-store" }, 401);
+        return j({ authenticated: true, email: adminSession.email, role: "Master Admin" }, { ...h, "Cache-Control": "no-store" });
+      }
+
+      if (url.pathname === "/api/admin/logout" && req.method === "POST") {
+        return j({ ok: true }, {
+          ...h,
+          "Set-Cookie": "worthit_admin_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0",
+          "Cache-Control": "no-store"
+        });
+      }
+
       if (url.pathname === "/api/health") return j({ ok: true, role, email: email || null }, h);
       if (!email) return j({ error: "Authentication required" }, h, 401);
 
@@ -98,4 +149,63 @@ export default {
 
 function j(x, h, status = 200) {
   return new Response(JSON.stringify(x), { status, headers: h });
+}
+
+function base64UrlEncode(bytes) {
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary).replace(/=/g, "").replace(/\\+/g, "-").replace(/\\//g, "_");
+}
+
+function base64UrlDecode(value) {
+  let base64 = value.replace(/-/g, "+").replace(/_/g, "/");
+  base64 += "=".repeat((4 - base64.length % 4) % 4);
+  const binary = atob(base64);
+  return Uint8Array.from(binary, c => c.charCodeAt(0));
+}
+
+async function sessionSigningKey(env) {
+  if (!env.ADMIN_SESSION_SECRET) return null;
+  return crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(env.ADMIN_SESSION_SECRET),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign", "verify"]
+  );
+}
+
+async function createAdminSession(email, env) {
+  const key = await sessionSigningKey(env);
+  if (!key) throw new Error("Admin session signing secret is not configured.");
+  const payload = base64UrlEncode(new TextEncoder().encode(JSON.stringify({
+    email,
+    exp: Math.floor(Date.now() / 1000) + 28800
+  })));
+  const signature = new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(payload)));
+  return payload + "." + base64UrlEncode(signature);
+}
+
+async function readAdminSession(req, env) {
+  try {
+    const key = await sessionSigningKey(env);
+    if (!key) return null;
+    const cookieHeader = req.headers.get("Cookie") || "";
+    const cookie = cookieHeader.split(";").map(v => v.trim()).find(v => v.startsWith("worthit_admin_session="));
+    if (!cookie) return null;
+    const token = cookie.slice("worthit_admin_session=".length);
+    const parts = token.split(".");
+    if (parts.length !== 2) return null;
+    const payloadBytes = base64UrlDecode(parts[0]);
+    const signatureBytes = base64UrlDecode(parts[1]);
+    const valid = await crypto.subtle.verify("HMAC", key, signatureBytes, new TextEncoder().encode(parts[0]));
+    if (!valid) return null;
+    const payload = JSON.parse(new TextDecoder().decode(payloadBytes));
+    if (!payload.email || !Number.isFinite(payload.exp) || payload.exp <= Math.floor(Date.now() / 1000)) return null;
+    const allowedEmails = (env.ADMIN_EMAILS || "").split(",").map(v => v.trim().toLowerCase()).filter(Boolean);
+    if (!allowedEmails.includes(String(payload.email).toLowerCase())) return null;
+    return { email: String(payload.email).toLowerCase(), exp: payload.exp };
+  } catch {
+    return null;
+  }
 }
