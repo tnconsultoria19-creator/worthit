@@ -2205,16 +2205,33 @@ function wireEntityModals(role, activeView) {
 // -------------------------------------------------------------
 // INITIALIZATION ON DOM LOAD
 // -------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  // If in internal dashboard (dashboard.html)
+document.addEventListener('DOMContentLoaded', async () => {
+  // The public GitHub Pages mirror must not act as an admin login bypass.
   if (document.getElementById('dashboardRoot')) {
-    const params = new URLSearchParams(window.location.search);
-    const role = params.get('role') || 'Master Admin';
-    const view = params.get('view') || 'overview';
-    renderInternalPortal(role, view);
+    if (window.location.hostname.endsWith('github.io')) {
+      window.location.replace('https://worthit.tnconsultoria19.workers.dev/admin.html');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/admin/session', {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
+      if (!response.ok) throw new Error('Admin session required');
+      const session = await response.json();
+      if (!session || !session.authenticated) throw new Error('Admin session required');
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get('view') || 'overview';
+      renderInternalPortal(session.role || 'Master Admin', view);
+    } catch {
+      window.location.replace('/admin.html');
+      return;
+    }
   }
 
-  // If in client portal (client.html)
+  // The client portal keeps its own entry flow.
   if (document.getElementById('clientRoot')) {
     const params = new URLSearchParams(window.location.search);
     const view = params.get('view') || 'overview';
