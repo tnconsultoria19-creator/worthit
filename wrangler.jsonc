@@ -12,7 +12,7 @@
   "r2_buckets": [
     {
       "binding": "ASSETS",
-      "bucket_name": "site-acquisition-assets"
+      "bucket_name": "worthit-assets"
     }
   ]
 }
