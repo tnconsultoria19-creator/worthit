@@ -81,7 +81,7 @@
           <p id="worthit-dialog-category" class="worthit-dialog-eyebrow"></p>
           <h2 id="worthit-dialog-title"></h2>
           <p id="worthit-dialog-intro"></p>
-          <a id="worthit-dialog-top-request" class="worthit-dialog-request" href="#">Solicitar este serviço ↗</a>
+          <button type="button" id="worthit-dialog-top-request" class="worthit-dialog-request" data-request-service>Solicitar este serviço ↗</button>
         </div>
       </div>
       <div class="worthit-dialog-body">
@@ -89,17 +89,68 @@
         <h3>O que podemos coordenar</h3>
         <ul id="worthit-dialog-list" class="worthit-dialog-list"></ul>
       </div>
+      <section class="worthit-service-request-wrap" id="worthit-service-request-wrap" hidden>
+        <div class="worthit-request-form-header">
+          <p class="worthit-dialog-eyebrow">PEDIDO DE SERVIÇO</p>
+          <h3>Solicitar este serviço</h3>
+          <p id="worthit-request-service-name" class="worthit-request-service-name"></p>
+        </div>
+        <form id="worthit-service-request-form" class="worthit-service-request-form">
+          <div class="worthit-request-fields">
+            <div class="worthit-request-field">
+              <label for="worthit-request-name">Nome completo *</label>
+              <input id="worthit-request-name" name="name" autocomplete="name" required maxlength="160">
+            </div>
+            <div class="worthit-request-field">
+              <label for="worthit-request-company">Empresa</label>
+              <input id="worthit-request-company" name="company" autocomplete="organization" maxlength="180">
+            </div>
+            <div class="worthit-request-field">
+              <label for="worthit-request-email">Email</label>
+              <input id="worthit-request-email" name="email" type="email" autocomplete="email" maxlength="200">
+            </div>
+            <div class="worthit-request-field">
+              <label for="worthit-request-phone">Telefone / WhatsApp</label>
+              <input id="worthit-request-phone" name="phone" type="tel" autocomplete="tel" maxlength="60">
+            </div>
+            <div class="worthit-request-field full">
+              <label for="worthit-request-location">Localização do projecto</label>
+              <input id="worthit-request-location" name="location" autocomplete="address-level2" maxlength="180" placeholder="Província, município ou país">
+            </div>
+            <div class="worthit-request-field full">
+              <label for="worthit-request-details">Descreva o que precisa *</label>
+              <textarea id="worthit-request-details" name="details" rows="4" required maxlength="4000" placeholder="Partilhe os requisitos, quantidades, prazos ou outros detalhes relevantes."></textarea>
+            </div>
+          </div>
+          <p class="worthit-request-hint">Indique pelo menos um contacto: email ou telefone.</p>
+          <p id="worthit-request-status" class="worthit-request-status" role="status" aria-live="polite"></p>
+          <div class="worthit-request-form-actions">
+            <button type="button" class="worthit-dialog-close-text" data-request-cancel>Cancelar</button>
+            <button type="submit" class="worthit-dialog-request worthit-dialog-request-dark" id="worthit-request-submit">Enviar pedido ↗</button>
+          </div>
+        </form>
+      </section>
       <div class="worthit-dialog-footer">
         <button type="button" class="worthit-dialog-close-text" data-dialog-close>Fechar</button>
-        <a id="worthit-dialog-bottom-request" class="worthit-dialog-request worthit-dialog-request-dark" href="#">Solicitar este serviço ↗</a>
+        <button type="button" id="worthit-dialog-bottom-request" class="worthit-dialog-request worthit-dialog-request-dark" data-request-service>Solicitar este serviço ↗</button>
       </div>
     </div>`;
   document.body.appendChild(dialog);
 
-  const createRequestLink = service => {
-    const subject = encodeURIComponent("Pedido de serviço WorthIt — " + service.title);
-    const body = encodeURIComponent("Olá WorthIt,\n\nTenho interesse no serviço: " + service.title + ".\n\nNome / Empresa:\nLocalização:\nDescrição do pedido:\n\nObrigado.");
-    return "mailto:?subject=" + subject + "&body=" + body;
+  let activeService = null;
+  const requestWrap = dialog.querySelector("#worthit-service-request-wrap");
+  const requestForm = dialog.querySelector("#worthit-service-request-form");
+  const requestStatus = dialog.querySelector("#worthit-request-status");
+  const requestSubmit = dialog.querySelector("#worthit-request-submit");
+
+  const openRequestForm = () => {
+    if (!activeService) return;
+    requestWrap.hidden = false;
+    requestStatus.textContent = "";
+    requestStatus.className = "worthit-request-status";
+    dialog.querySelector("#worthit-request-service-name").textContent = activeService.title;
+    requestWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+    dialog.querySelector("#worthit-request-name").focus({ preventScroll: true });
   };
 
   grid.querySelectorAll("[data-service-open]").forEach(button => {
@@ -113,11 +164,63 @@
       dialog.querySelector("#worthit-dialog-intro").textContent = service.intro;
       dialog.querySelector("#worthit-dialog-detail").textContent = service.detail;
       dialog.querySelector("#worthit-dialog-list").innerHTML = service.bullets.map(item => "<li>" + escapeHtml(item) + "</li>").join("");
-      const requestLink = createRequestLink(service);
-      dialog.querySelector("#worthit-dialog-top-request").href = requestLink;
-      dialog.querySelector("#worthit-dialog-bottom-request").href = requestLink;
+      activeService = service;
+      requestForm.reset();
+      requestWrap.hidden = true;
+      requestStatus.textContent = "";
+      requestStatus.className = "worthit-request-status";
+      requestSubmit.disabled = false;
+      requestSubmit.textContent = "Enviar pedido ↗";
       dialog.showModal();
     });
+  });
+
+  dialog.querySelectorAll("[data-request-service]").forEach(button => button.addEventListener("click", openRequestForm));
+  dialog.querySelector("[data-request-cancel]").addEventListener("click", () => {
+    requestWrap.hidden = true;
+    requestStatus.textContent = "";
+    requestStatus.className = "worthit-request-status";
+  });
+
+  requestForm.addEventListener("submit", async event => {
+    event.preventDefault();
+    requestStatus.textContent = "";
+    requestStatus.className = "worthit-request-status";
+    const data = Object.fromEntries(new FormData(requestForm).entries());
+    if (!String(data.email || "").trim() && !String(data.phone || "").trim()) {
+      requestStatus.textContent = "Indique pelo menos um contacto: email ou telefone.";
+      requestStatus.classList.add("is-error");
+      return;
+    }
+    requestSubmit.disabled = true;
+    requestSubmit.textContent = "A enviar...";
+    try {
+      const response = await fetch("/api/service-requests", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service: activeService?.title || "",
+          name: data.name,
+          company: data.company,
+          email: data.email,
+          phone: data.phone,
+          location: data.location,
+          details: data.details
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Não foi possível registar o pedido.");
+      requestStatus.textContent = "Pedido registado com sucesso. Referência: " + result.id + ".";
+      requestStatus.classList.add("is-success");
+      requestForm.reset();
+      requestSubmit.textContent = "Pedido enviado ✓";
+    } catch (error) {
+      requestStatus.textContent = error.message || "Não foi possível enviar o pedido. Tente novamente.";
+      requestStatus.classList.add("is-error");
+      requestSubmit.disabled = false;
+      requestSubmit.textContent = "Tentar novamente ↗";
+    }
   });
 
   dialog.querySelectorAll("[data-dialog-close]").forEach(button => button.addEventListener("click", () => dialog.close()));
