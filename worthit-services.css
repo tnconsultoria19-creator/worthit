@@ -183,3 +183,71 @@ header[data-purpose="hero-container"] nav > a { margin-left:0 !important; margin
  .worthit-request-form-header h3 { font-size:22px; }
  .worthit-request-form-actions { flex-wrap:wrap; }
 }
+
+/* Requested photographic texture across light sections, with a strong light overlay for readability. */
+.bg-white:not(.worthit-service-card) {
+  background-image: linear-gradient(rgba(255,255,255,.87), rgba(255,255,255,.91)), url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.worthit-service-caption,
+.worthit-service-action,
+.worthit-dialog-body,
+.worthit-dialog-footer,
+.worthit-service-request-wrap {
+  background-image: linear-gradient(rgba(255,255,255,.91), rgba(255,255,255,.94)), url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.worthit-hero-cta,
+.worthit-hero-cta:visited {
+  color: #1e1e1e !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+.worthit-hero-cta:hover,
+.worthit-hero-cta:focus-visible {
+  color: #111111 !important;
+  background-color: #f0ece5 !important;
+}
+footer[data-purpose="site-footer"] {
+  color:#f4f2ee !important;
+  background-color:#080808 !important;
+  background-image:linear-gradient(rgba(8,8,8,.93),rgba(8,8,8,.96)),url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg") !important;
+  background-size:cover !important;
+  background-position:center !important;
+  border-top-color:#282828 !important;
+}
+footer[data-purpose="site-footer"] h4 { color:#ffffff !important; }
+footer[data-purpose="site-footer"] p,
+footer[data-purpose="site-footer"] li,
+footer[data-purpose="site-footer"] a { color:#c9c5be !important; }
+footer[data-purpose="site-footer"] a:hover { color:#ffffff !important; }
+footer[data-purpose="site-footer"] > div > div:last-child { border-top-color:#333333 !important; }
+footer[data-purpose="site-footer"] input { background:#171717 !important; color:#ffffff !important; border:1px solid #3c3c3c !important; }
+footer[data-purpose="site-footer"] input::placeholder { color:#aaa39a !important; }
+footer[data-purpose="site-footer"] button { color:#ffffff !important; background:#292929 !important; }
+@media(max-width:640px) {
+  .worthit-service-grid {
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    gap:10px !important;
+    padding:0 2px 14px !important;
+    scroll-snap-type:x mandatory !important;
+    scroll-padding-inline:2px !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .worthit-service-grid .worthit-service-card {
+    flex:0 0 46% !important;
+    width:46% !important;
+    min-width:46% !important;
+    scroll-snap-align:start;
+  }
+  .worthit-service-grid::-webkit-scrollbar { height:4px; }
+  .worthit-service-grid::-webkit-scrollbar-thumb { background:#bcb5a9; border-radius:4px; }
+  .worthit-service-grid::-webkit-scrollbar-track { background:#efede8; }
+}
