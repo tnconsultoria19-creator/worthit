@@ -110,6 +110,66 @@ export default {
         });
       }
 
+      if (url.pathname === "/api/service-requests" && req.method === "POST") {
+        let requestData;
+        try {
+          requestData = await req.json();
+        } catch {
+          return j({ error: "Pedido inválido." }, h, 400);
+        }
+
+        const clean = (value, max = 500) => String(value || "").trim().slice(0, max);
+        const service = clean(requestData.service, 180);
+        const name = clean(requestData.name, 160);
+        const company = clean(requestData.company, 180);
+        const requestEmail = clean(requestData.email, 200).toLowerCase();
+        const phone = clean(requestData.phone, 60);
+        const location = clean(requestData.location, 180);
+        const details = clean(requestData.details, 4000);
+        if (!service || !name || (!requestEmail && !phone) || !details) {
+          return j({ error: "Preencha o nome, o serviço, a descrição e pelo menos um contacto (email ou telefone)." }, h, 400);
+        }
+        if (requestEmail && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(requestEmail)) {
+          return j({ error: "O email indicado não parece válido." }, h, 400);
+        }
+
+        await env.DB.prepare(`CREATE TABLE IF NOT EXISTS worthit_service_requests (
+          id TEXT PRIMARY KEY,
+          service TEXT NOT NULL,
+          name TEXT NOT NULL,
+          company TEXT,
+          email TEXT,
+          phone TEXT,
+          location TEXT,
+          details TEXT NOT NULL,
+          status TEXT NOT NULL DEFAULT 'Novo',
+          created_at TEXT NOT NULL
+        )`).run();
+
+        const requestId = "WR-" + crypto.randomUUID().split("-")[0].toUpperCase();
+        await env.DB.prepare("INSERT INTO worthit_service_requests (id, service, name, company, email, phone, location, details, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Novo', datetime('now'))")
+          .bind(requestId, service, name, company || null, requestEmail || null, phone || null, location || null, details).run();
+        return j({ ok: true, id: requestId }, { ...h, "Cache-Control": "no-store" }, 201);
+      }
+
+      if (url.pathname === "/api/service-requests" && req.method === "GET") {
+        if (!adminSession) return j({ error: "Autenticação administrativa necessária." }, h, 401);
+        await env.DB.prepare(`CREATE TABLE IF NOT EXISTS worthit_service_requests (
+          id TEXT PRIMARY KEY,
+          service TEXT NOT NULL,
+          name TEXT NOT NULL,
+          company TEXT,
+          email TEXT,
+          phone TEXT,
+          location TEXT,
+          details TEXT NOT NULL,
+          status TEXT NOT NULL DEFAULT 'Novo',
+          created_at TEXT NOT NULL
+        )`).run();
+        const requests = await env.DB.prepare("SELECT * FROM worthit_service_requests ORDER BY created_at DESC LIMIT 200").all();
+        return j({ requests: requests.results || [] }, { ...h, "Cache-Control": "no-store" });
+      }
+
       if (url.pathname === "/api/health") return j({ ok: true, role, email: email || null }, h);
       if (!email) return j({ error: "Authentication required" }, h, 401);
 
@@ -154,7 +214,7 @@ function j(x, h, status = 200) {
 function base64UrlEncode(bytes) {
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/=/g, "").replace(/\\+/g, "-").replace(/\\//g, "_");
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_");
 }
 
 function base64UrlDecode(value) {
