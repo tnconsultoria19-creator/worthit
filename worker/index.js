@@ -5,8 +5,9 @@ export default {
     const url = new URL(req.url);
     const adminSession = await readAdminSession(req, env);
 
-    // Protect the internal dashboard. The public website remains accessible without login.
-    if (url.pathname === "/dashboard.html" && !adminSession) {
+    // Public demo route uses sample data only; actual admin API endpoints remain protected.
+    const isDemoDashboard = url.pathname === "/dashboard.html" && url.searchParams.get("demo") === "1";
+    if (url.pathname === "/dashboard.html" && !adminSession && !isDemoDashboard) {
       return Response.redirect(new URL("/admin.html", url).toString(), 302);
     }
     if (url.pathname === "/admin.html" && adminSession) {
