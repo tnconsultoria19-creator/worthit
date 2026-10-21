@@ -185,7 +185,7 @@ header[data-purpose="hero-container"] nav > a { margin-left:0 !important; margin
 }
 
 /* Requested photographic texture across light sections, with a strong light overlay for readability. */
-.bg-white:not(.worthit-service-card) {
+.bg-white:not(.worthit-service-card):not(.worthit-hero-cta):not([data-purpose="site-footer"]) {
   background-image: linear-gradient(rgba(255,255,255,.87), rgba(255,255,255,.91)), url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg") !important;
   background-size: cover !important;
   background-position: center !important;
