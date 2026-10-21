@@ -1,7 +1,18 @@
-{ 
-  "name": "site-acquisition-angola-api",
+{
+  "name": "worthit",
   "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
-  "d1_databases": [{"binding":"DB","database_name":"site-acquisition-db","database_id":"REPLACE_WITH_D1_ID"}],
-  "r2_buckets": [{"binding":"ASSETS","bucket_name":"site-acquisition-assets"}]
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "site-acquisition-db",
+      "database_id": "ebf71c2e-17f9-47fb-814e-718777163c3b"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ASSETS",
+      "bucket_name": "site-acquisition-assets"
+    }
+  ]
 }
