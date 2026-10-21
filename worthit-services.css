@@ -1,0 +1,152 @@
+/* WorthIt service cards and detail dialog — preserves the established charcoal, beige and white theme. */
+[data-purpose="services-overview"].worthit-service-strip {
+  background-color:#1e1e1e !important;
+  color:#fff !important;
+}
+[data-purpose="services-overview"].worthit-service-strip h3 {
+  color:#f1f1f1 !important;
+  opacity:1 !important;
+}
+[data-purpose="services-overview"].worthit-service-strip svg {
+  color:#efefef !important;
+  stroke:currentColor;
+}
+[data-purpose="services-overview"].worthit-service-strip > div > div {
+  border-color:#4a4a4a !important;
+}
+header[data-purpose="hero-container"] nav {
+  flex-wrap:wrap;
+  gap:14px 18px;
+}
+header[data-purpose="hero-container"] nav > a { margin-left:0 !important; margin-right:0 !important; }
+.worthit-service-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+  align-items:stretch;
+}
+.worthit-service-card {
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  padding:0;
+  border:1px solid #e7e5e2;
+  background:#fff;
+  color:#171717;
+  text-align:center;
+  cursor:pointer;
+  overflow:hidden;
+  transition:border-color .18s ease,transform .18s ease;
+}
+.worthit-service-card:hover { border-color:#9d9b96; transform:translateY(-2px); }
+.worthit-service-card:focus-visible { outline:2px solid #5f513b; outline-offset:3px; }
+.worthit-service-image { display:block; width:100%; height:clamp(190px,21vw,275px); overflow:hidden; background:#e8e5df; }
+.worthit-service-image img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
+.worthit-service-card:hover .worthit-service-image img { transform:scale(1.025); }
+.worthit-service-caption {
+  display:flex; align-items:center; justify-content:center;
+  min-height:62px; padding:12px 12px 4px;
+  color:#171717; background:#fff;
+  font-family:"Plus Jakarta Sans",sans-serif; font-size:11px;
+  line-height:1.45; letter-spacing:.075em; font-weight:700; text-transform:uppercase;
+}
+.worthit-service-action {
+  display:block; padding:8px 12px 13px; color:#655238; background:#fff;
+  font-family:"Plus Jakarta Sans",sans-serif; font-size:9px; font-weight:700; letter-spacing:.13em;
+}
+.worthit-service-action:hover { color:#171717; }
+.worthit-process-grid {
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr));
+  background:#fff; border:1px solid #e5e1d9;
+}
+.worthit-process-step { min-width:0; padding:22px 18px 24px; border-right:1px solid #e5e1d9; }
+.worthit-process-step:last-child { border-right:0; }
+.worthit-process-step > span {
+  display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;
+  margin-bottom:15px; background:#f0ece5; border:1px solid #e2ddd3; border-radius:50%;
+  color:#524a3e; font-size:10px; font-weight:700;
+}
+.worthit-process-step h3 { margin:0 0 9px; color:#252525; font-family:"Playfair Display",serif; font-size:18px; font-weight:500; line-height:1.25; }
+.worthit-process-step p { margin:0; color:#68635d; font-size:12px; line-height:1.6; }
+.worthit-future-banner {
+  display:grid; grid-template-columns:minmax(220px,.8fr) 1.4fr; align-items:stretch;
+  border:1px solid #e7e5e2; background:#f4f2ee;
+}
+.worthit-future-image { min-height:190px; background:#e2dfd8; overflow:hidden; }
+.worthit-future-image img { width:100%; height:100%; min-height:190px; object-fit:cover; display:block; }
+.worthit-future-copy { align-self:center; padding:26px 30px; }
+.worthit-admin-link {
+  display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+  padding:10px 13px; color:#fff !important; background:#1e1e1e; border:1px solid #1e1e1e;
+  font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+}
+.worthit-admin-link:hover { background:#393939; }
+.worthit-service-dialog {
+  width:min(880px,calc(100% - 32px)); max-width:none; max-height:88vh;
+  padding:0; border:0; overflow:hidden; background:#fff; color:#222;
+  box-shadow:0 18px 70px rgba(0,0,0,.28);
+}
+.worthit-service-dialog::backdrop { background:rgba(20,20,20,.62); backdrop-filter:blur(2px); }
+.worthit-dialog-shell { max-height:88vh; display:flex; flex-direction:column; overflow:auto; }
+.worthit-dialog-hero {
+  position:relative; display:flex; align-items:flex-end; min-height:335px;
+  padding:32px 38px; color:#fff; background:#202020; isolation:isolate;
+}
+.worthit-dialog-hero > img { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; }
+.worthit-dialog-hero-shade { position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,rgba(16,16,16,.91),rgba(16,16,16,.68) 60%,rgba(16,16,16,.38)); }
+.worthit-dialog-close {
+  position:absolute; top:15px; right:17px; width:38px; height:38px;
+  border:1px solid rgba(255,255,255,.65); border-radius:50%;
+  background:rgba(0,0,0,.28); color:#fff; font-size:25px; line-height:1; cursor:pointer;
+}
+.worthit-dialog-hero-content { width:min(630px,100%); }
+.worthit-dialog-eyebrow { margin:0 0 12px; color:#f0d9b2 !important; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+.worthit-dialog-hero h2 { margin:0 0 12px; color:#fff !important; font-family:"Playfair Display",serif; font-size:clamp(28px,4vw,42px); font-weight:500; line-height:1.12; }
+.worthit-dialog-hero-content > p:not(.worthit-dialog-eyebrow) { max-width:620px; margin:0 0 19px; color:#f4f4f2 !important; font-size:14px; line-height:1.65; }
+.worthit-dialog-request {
+  display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:42px;
+  padding:11px 16px; color:#1e1e1e !important; background:#fff; border:1px solid #fff;
+  font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+}
+.worthit-dialog-request:hover { background:#f4f2ee; }
+.worthit-dialog-body { padding:28px 38px 24px; }
+.worthit-dialog-detail { max-width:760px; margin:0 0 22px; color:#57534d; font-size:14px; line-height:1.7; }
+.worthit-dialog-body h3 { margin:0 0 13px; color:#252525; font-family:"Playfair Display",serif; font-size:20px; font-weight:500; }
+.worthit-dialog-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 24px; margin:0; padding:0; list-style:none; }
+.worthit-dialog-list li { padding:0 0 10px 17px; border-bottom:1px solid #eeece8; position:relative; color:#514d47; font-size:13px; line-height:1.55; }
+.worthit-dialog-list li:before { content:""; position:absolute; top:.55em; left:0; width:5px; height:5px; border-radius:50%; background:#b49a70; }
+.worthit-dialog-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px 38px 24px; border-top:1px solid #e9e6e0; }
+.worthit-dialog-close-text { padding:10px 0; border:0; background:transparent; color:#615c55; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; }
+.worthit-dialog-request-dark { background:#1e1e1e; color:#fff !important; border-color:#1e1e1e; }
+.worthit-dialog-request-dark:hover { background:#3a3a3a; }
+@media(max-width:1100px) {
+  .worthit-service-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  header[data-purpose="hero-container"] nav { gap:12px; }
+}
+@media(max-width:850px) {
+  .worthit-service-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .worthit-process-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .worthit-process-step { border-bottom:1px solid #e5e1d9; }
+  .worthit-process-step:nth-child(2n) { border-right:0; }
+  .worthit-future-banner { grid-template-columns:.8fr 1.2fr; }
+}
+@media(max-width:640px) {
+  .worthit-service-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .worthit-service-image { height:clamp(145px,48vw,230px); }
+  .worthit-service-caption { min-height:60px; padding:10px 8px 4px; font-size:9px; letter-spacing:.035em; }
+  .worthit-service-action { font-size:8px; padding:8px 6px 12px; letter-spacing:.08em; }
+  .worthit-process-grid { grid-template-columns:1fr; }
+  .worthit-process-step,.worthit-process-step:nth-child(2n) { border-right:0; border-bottom:1px solid #e5e1d9; }
+  .worthit-process-step:last-child { border-bottom:0; }
+  .worthit-future-banner { grid-template-columns:1fr; }
+  .worthit-future-image,.worthit-future-image img { min-height:170px; max-height:220px; }
+  .worthit-future-copy { padding:21px; }
+  .worthit-admin-link { font-size:8px; padding:8px 7px; letter-spacing:.04em; }
+  .worthit-dialog-hero { min-height:300px; padding:24px 22px; }
+  .worthit-dialog-hero h2 { font-size:30px; }
+  .worthit-dialog-hero-content > p:not(.worthit-dialog-eyebrow) { font-size:13px; }
+  .worthit-dialog-body { padding:22px; }
+  .worthit-dialog-list { grid-template-columns:1fr; gap:8px; }
+  .worthit-dialog-footer { padding:14px 22px 21px; align-items:stretch; }
+  .worthit-dialog-request { text-align:center; font-size:9px; padding:11px; }
+}
