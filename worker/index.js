@@ -129,7 +129,7 @@ export default {
         if (!service || !name || (!requestEmail && !phone) || !details) {
           return j({ error: "Preencha o nome, o serviço, a descrição e pelo menos um contacto (email ou telefone)." }, h, 400);
         }
-        if (requestEmail && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(requestEmail)) {
+        if (requestEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(requestEmail)) {
           return j({ error: "O email indicado não parece válido." }, h, 400);
         }
 
