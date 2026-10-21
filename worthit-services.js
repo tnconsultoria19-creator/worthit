@@ -25,34 +25,6 @@
       detail: "Reunimos informação de mercado e ajudamos a encontrar recursos operacionais adequados ao plano do cliente.",
       bullets: ["Pesquisa de instalações e localizações", "Recolha de informação de mercado", "Identificação de fornecedores operacionais", "Coordenação de requisitos e serviços locais"]
     },
-    {
-      id: "partners", number: "04", category: "LIGAÇÕES LOCAIS", title: "Correspondência de Parceiros & Fornecedores",
-      image: "https://images.openai.com/static-rsc-4/jNWRjcYjxUlaTf-5BnP3iBja5bjpBJGmR5kgBJ9tNPODpJEnZ3o6qwXQL_d1LmFWMcF8XacvoU1eUDJ5Qljx8KuPXCG4rtDHZ5Lcjqpsu89P_Xo23FoIyPbUgyrC8wekwfnLtAYcj0Fuyd5jYT9y39iPauAAjMzUFrb07O3DocTQ?purpose=inline",
-      alt: "Parceiros de negócios", intro: "Ligamos clientes a potenciais prestadores de serviços, fornecedores, empreiteiros e parceiros comerciais.",
-      detail: "Apoiamos a pesquisa e apresentação de contactos relevantes. A escolha e contratação final dos prestadores cabe ao cliente.",
-      bullets: ["Identificação de fornecedores locais", "Pesquisa de empreiteiros e prestadores de serviços", "Introduções comerciais", "Pesquisa de parceiros para projectos específicos"]
-    },
-    {
-      id: "agriculture", number: "05", category: "AGRICULTURA", title: "Agricultura & Agro-Sourcing",
-      image: "https://images.openai.com/static-rsc-4/UNLw5pFt4qL4kcFxqQuvnxIZwpIWhvVflI1BO7DAyH-Bq8pznCYjqwP5xVfVzPT43hR9YCsnhXC9vl3BS0OUZlxHQiVocm0Jf-N9YBexg-CyETfAlQmOVy0Mc2-v9L9ssQ2hmWYnNM6Moaojy0srhAGpo71Wi0iXJdsNwVTt0rQo?purpose=inline",
-      alt: "Insumos e fornecimentos agrícolas", intro: "Facilitamos o acesso a recursos agrícolas, insumos, compradores, fornecedores e oportunidades comerciais.",
-      detail: "Clarificamos as necessidades do projecto e pesquisamos potenciais fontes de fornecimento ou parceiros adequados.",
-      bullets: ["Equipamentos e insumos agrícolas", "Pesquisa de terrenos e instalações agrícolas", "Sistemas de irrigação e fornecimentos", "Identificação de compradores e parceiros de processamento"]
-    },
-    {
-      id: "energy", number: "06", category: "ENERGIA", title: "Energia & Solar",
-      image: "https://images.openai.com/static-rsc-4/gHQL8v4HX0Rc1TEeJuQDnW9I9b04vgkT6ZW7CpOGfo-q_PeNQ7_OYcAQ_eWVcmt4jnFjoB9HprrEpVTrNYLSPozd4COLkIAAin3WalqpLUyVJ5UHDzKvIna3D52mDZ8iGayysrCHFWZLMphVX0Cs-neg4g1jS5w-T2QX41BzWJc?purpose=inline",
-      alt: "Painéis solares", intro: "Ajudamos a localizar fornecedores e equipamento para necessidades energéticas de empresas e projectos.",
-      detail: "Apoiamos a pesquisa e coordenação com fornecedores qualificados. Instalações e trabalhos técnicos são executados pelos prestadores contratados para esse fim.",
-      bullets: ["Painéis solares e prestadores de instalação", "Inversores, baterias e geradores", "Soluções energéticas comerciais", "Procurement de equipamentos relacionados com energia"]
-    },
-    {
-      id: "construction", number: "07", category: "DESENVOLVIMENTO", title: "Construção & Facilitação de Desenvolvimento",
-      image: "https://images.openai.com/static-rsc-4/fczNNKvklcDV7m9-rYf6GEXrExpWS3kgeRpVNpiV-E4BdwL24GEhvUzTcPe8sY3SrrweJlhtlYwyAeOmp07Hm5lKIeM4qb2TQnpuy-VVBxUAKp9QNwmTLDJ9PcsFAVkz66R31pa3lzi5yw4M4ykpbIMHDEQQGpumURz9Xr-kAe4?purpose=inline",
-      alt: "Materiais e trabalho de construção civil", intro: "Apoiamos a pesquisa dos recursos necessários a projectos de construção e desenvolvimento.",
-      detail: "Ajudamos a identificar prestadores e fornecedores adequados. O âmbito é acordado caso a caso; a WorthIt não presume executar directamente os trabalhos.",
-      bullets: ["Engenheiros, arquitectos e empreiteiros", "Materiais e equipamentos", "Terrenos, instalações e espaços", "Coordenação de fornecedores e intervenientes"]
-    }
   ];
 
   const grid = document.getElementById("worthit-service-grid");
@@ -60,7 +32,7 @@
   const escapeHtml = value => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 
   grid.innerHTML = services.map(service => `
-    <button type="button" class="worthit-service-card" data-service-open="${service.id}" aria-haspopup="dialog" aria-label="Saber mais sobre ${escapeHtml(service.title)}">
+    <button type="button" class="worthit-service-card" id="service-${service.id}" data-service-open="${service.id}" aria-haspopup="dialog" aria-label="Saber mais sobre ${escapeHtml(service.title)}">
       <span class="worthit-service-image"><img src="${escapeHtml(service.image)}" alt="${escapeHtml(service.alt)}" loading="lazy"></span>
       <span class="worthit-service-caption">${escapeHtml(service.title)}</span>
       <span class="worthit-service-action">SABER MAIS ↗</span>
