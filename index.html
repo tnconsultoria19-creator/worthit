@@ -85,31 +85,32 @@
 
 <style data-purpose="hero-contrast-fix">
   /* Contrast-only correction; the existing hero composition is unchanged. */
-  header[data-purpose="hero-container"] > div:first-child {
+  header[data-purpose="hero-container"] .worthit-hero-left {
     background-color: #1E1E1E !important;
     color: #FFFFFF !important;
   }
-  header[data-purpose="hero-container"] > div:first-child h1,
-  header[data-purpose="hero-container"] > div:first-child .font-serif,
-  header[data-purpose="hero-container"] > div:first-child .font-editorial {
+  header[data-purpose="hero-container"] .worthit-hero-left h1,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-serif,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-editorial,
+  header[data-purpose="hero-container"] .worthit-hero-left > div > a:not(.worthit-hero-cta) {
     color: #FFFFFF !important;
     opacity: 1 !important;
   }
-  header[data-purpose="hero-container"] > div:first-child p {
+  header[data-purpose="hero-container"] .worthit-hero-left p {
     color: #E5E5E5 !important;
     opacity: 1 !important;
   }
 </style>
-<link rel="stylesheet" href="worthit-services.css?v=20261021f">
+<link rel="stylesheet" href="worthit-services.css?v=20261021g">
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
 <!-- BEGIN: HeroSection -->
 <header class="relative w-full min-h-screen lg:h-[720px] xl:h-[780px] flex flex-col lg:flex-row" data-purpose="hero-container">
-<nav class="worthit-mobile-nav" aria-label="Navegação principal móvel">
-<a href="#about">SOBRE NÓS</a>
-<a href="#services">ÁREAS DE ACTUAÇÃO</a>
-<a href="#process">COMO TRABALHAMOS</a>
-<a class="worthit-mobile-admin" href="https://worthit.tnconsultoria19.workers.dev/admin.html">ADMIN SIGN IN</a>
+<nav aria-label="Main Navigation" class="worthit-mobile-nav flex items-center justify-end space-x-8 px-8 sm:px-14 py-10 lg:py-14 z-20">
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#about">SOBRE NÓS</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
+<a class="worthit-admin-link worthit-mobile-admin" href="https://worthit.tnconsultoria19.workers.dev/admin.html">ADMIN SIGN IN</a>
 </nav>
 <!-- Hero Left Column (Dark) -->
 <div class="worthit-hero-left w-full lg:w-1/2 bg-brandDark text-white flex flex-col justify-between px-8 sm:px-16 md:px-24 py-10 lg:py-14 relative z-10">
@@ -132,9 +133,6 @@
             SOLICITAR UM SERVIÇO
           </a>
 </div>
-</div>
-<div class="worthit-mobile-hero-image" aria-label="Imagem de destaque">
-<img src="Gemini_Generated_Image_15pb5e15pb5e15pb.png" alt="Imagem de destaque da WorthIt" />
 </div>
 <!-- Left Column Bottom Spacer for alignment balance -->
 <div class="hidden lg:block h-6"></div>

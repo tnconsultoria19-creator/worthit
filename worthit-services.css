@@ -295,87 +295,86 @@ section[data-purpose="worthit-process"] {
 }
 
 
-/* Mobile hero: place the navigation first, then the message, CTA and hero image. */
-.worthit-mobile-nav,
-.worthit-mobile-hero-image { display:none; }
+/* Mobile menu: same horizontal, naturally-wrapping style as before; only moved above the hero. */
+.worthit-mobile-nav { display:none; }
+.worthit-mobile-hero-image { display:none !important; }
 
 @media (max-width:1023px) {
   header[data-purpose="hero-container"] {
-    min-height:0 !important;
     height:auto !important;
     flex-direction:column !important;
   }
   header[data-purpose="hero-container"] .worthit-mobile-nav {
-    display:grid !important;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:0;
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:14px 18px !important;
     width:100%;
-    padding:7px 12px;
-    background:#f4f2ee;
+    padding:12px 18px !important;
+    margin:0;
+    background:#F4F2EE !important;
+    color:#1E1E1E !important;
     border-bottom:1px solid #dfd9cf;
     position:relative;
     z-index:30;
   }
-  header[data-purpose="hero-container"] .worthit-mobile-nav a {
-    display:flex;
+  header[data-purpose="hero-container"] .worthit-mobile-nav > a {
+    display:inline-flex !important;
     align-items:center;
     justify-content:center;
-    min-height:38px;
-    padding:7px 5px;
-    color:#282722;
+    min-height:30px;
+    margin:0 !important;
+    padding:4px 0;
+    background:transparent;
+    border:0;
+    color:#262626 !important;
     font-family:"Plus Jakarta Sans",Arial,sans-serif;
-    font-size:9px;
-    line-height:1.25;
-    font-weight:700;
-    letter-spacing:.045em;
-    text-align:center;
+    font-size:11px !important;
+    line-height:1.35;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-align:left;
     text-decoration:none;
     text-transform:uppercase;
+    white-space:normal;
   }
-  header[data-purpose="hero-container"] .worthit-mobile-nav a:nth-child(odd) {
-    border-right:1px solid #ded8ce;
-  }
-  header[data-purpose="hero-container"] .worthit-mobile-nav a:nth-child(n+3) {
-    border-top:1px solid #ded8ce;
-  }
-  header[data-purpose="hero-container"] .worthit-mobile-nav .worthit-mobile-admin {
+  header[data-purpose="hero-container"] .worthit-mobile-nav > a.worthit-mobile-admin {
+    display:inline-flex !important;
     color:#fff !important;
-    background:#1e1e1e;
-    margin:3px 2px;
-    border:0;
+    background:#1e1e1e !important;
+    border:1px solid #1e1e1e;
+    padding:8px 10px;
+    font-size:9px !important;
+    letter-spacing:.08em;
+    white-space:nowrap;
   }
   header[data-purpose="hero-container"] .worthit-hero-left {
-    padding:23px 22px 0 !important;
-    height:auto !important;
-    justify-content:flex-start !important;
+    background-color:#1E1E1E !important;
+    color:#FFFFFF !important;
   }
-  header[data-purpose="hero-container"] .worthit-hero-copy {
-    margin:25px 0 0 !important;
-    max-width:100% !important;
+  header[data-purpose="hero-container"] .worthit-hero-left h1,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-serif,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-editorial {
+    color:#FFFFFF !important;
+    opacity:1 !important;
   }
-  header[data-purpose="hero-container"] .worthit-hero-copy h1 {
-    margin-bottom:20px !important;
-  }
-  header[data-purpose="hero-container"] .worthit-hero-copy p {
-    margin-bottom:23px !important;
-  }
-  header[data-purpose="hero-container"] .worthit-mobile-hero-image {
-    display:block !important;
-    width:calc(100% + 44px);
-    height:clamp(220px,70vw,330px);
-    margin:19px -22px 0;
-    overflow:hidden;
-    background:#e9e5dc;
-  }
-  header[data-purpose="hero-container"] .worthit-mobile-hero-image img {
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
+  header[data-purpose="hero-container"] .worthit-hero-left p {
+    color:#E5E5E5 !important;
+    opacity:1 !important;
   }
   header[data-purpose="hero-container"] .worthit-hero-right {
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-right .worthit-desktop-nav {
     display:none !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-right > div:last-child {
+    width:100% !important;
+    height:400px !important;
   }
 }
 
