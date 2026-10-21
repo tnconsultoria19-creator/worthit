@@ -21,7 +21,9 @@ header[data-purpose="hero-container"] nav {
 header[data-purpose="hero-container"] nav > a { margin-left:0 !important; margin-right:0 !important; }
 .worthit-service-grid {
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  max-width:1100px;
+  margin-inline:auto;
   gap:20px;
   align-items:stretch;
 }
@@ -266,3 +268,13 @@ footer[data-purpose="site-footer"] button { color:#ffffff !important; background
 }
 .demo-mode-banner strong { font-size:9px; letter-spacing:.12em; }
 @media(max-width:640px) { .demo-mode-banner { padding:10px 14px; font-size:10px; } }
+
+
+/* Keep the "Como trabalhamos" section white, with the newly selected Pexels image as a subtle texture. */
+section[data-purpose="worthit-process"] {
+  background-color:#ffffff !important;
+  background-image:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.92)),url("https://images.pexels.com/photos/4249270/pexels-photo-4249270.jpeg") !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+}
