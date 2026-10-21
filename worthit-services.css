@@ -150,3 +150,36 @@ header[data-purpose="hero-container"] nav > a { margin-left:0 !important; margin
   .worthit-dialog-footer { padding:14px 22px 21px; align-items:stretch; }
   .worthit-dialog-request { text-align:center; font-size:9px; padding:11px; }
 }
+
+/* Service request form inside the service detail dialog */
+.worthit-service-request-wrap { padding:25px 38px 29px; background:#faf9f7; border-top:1px solid #e9e6e0; }
+.worthit-service-request-wrap[hidden] { display:none !important; }
+.worthit-request-form-header { margin:0 0 20px; }
+.worthit-request-form-header .worthit-dialog-eyebrow { margin-bottom:8px; color:#89724f !important; }
+.worthit-request-form-header h3 { margin:0 0 7px; color:#252525; font-family:"Playfair Display",serif; font-size:25px; font-weight:500; }
+.worthit-request-service-name { margin:0; color:#6a655e; font-size:12px; line-height:1.55; }
+.worthit-service-request-form { margin:0; }
+.worthit-request-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px 18px; }
+.worthit-request-field { min-width:0; }
+.worthit-request-field.full { grid-column:1 / -1; }
+.worthit-request-field label { display:block; margin-bottom:7px; color:#3d3934; font-size:10px; font-weight:700; letter-spacing:.04em; }
+.worthit-request-field input,
+.worthit-request-field textarea { display:block; width:100%; border:1px solid #ded9d1; border-radius:0; background:#fff; color:#252525; padding:11px 12px; font:12px/1.5 "Plus Jakarta Sans",Arial,sans-serif; outline:none; }
+.worthit-request-field input { min-height:42px; }
+.worthit-request-field textarea { resize:vertical; min-height:98px; }
+.worthit-request-field input:focus,
+.worthit-request-field textarea:focus { border-color:#9c8156; box-shadow:0 0 0 2px rgba(180,154,112,.14); }
+.worthit-request-hint { margin:12px 0 0; color:#77716a; font-size:10px; line-height:1.5; }
+.worthit-request-status { display:none; margin:14px 0 0; padding:11px 12px; border:1px solid #e2d4bb; background:#f9f4eb; color:#5b4a2e; font-size:12px; line-height:1.55; }
+.worthit-request-status:not(:empty) { display:block; }
+.worthit-request-status.is-error { border-color:#e6c9c4; background:#fcf2f0; color:#883e35; }
+.worthit-request-status.is-success { border-color:#d5dfd1; background:#f3f7f1; color:#355b34; }
+.worthit-request-form-actions { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:18px; }
+.worthit-dialog-request { font-family:"Plus Jakarta Sans",Arial,sans-serif; cursor:pointer; }
+@media(max-width:640px) {
+ .worthit-service-request-wrap { padding:22px; }
+ .worthit-request-fields { grid-template-columns:1fr; gap:13px; }
+ .worthit-request-field.full { grid-column:auto; }
+ .worthit-request-form-header h3 { font-size:22px; }
+ .worthit-request-form-actions { flex-wrap:wrap; }
+}
