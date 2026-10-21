@@ -1157,6 +1157,35 @@ function renderClientPortal(activeView = 'overview') {
           </table>
         </div>
       </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Localizações dos Sites</h3>
+            <div class="muted">Acompanhe as localizações associadas aos seus projetos.</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th><th>Projeto</th><th>Província / Município</th><th>Fase</th><th>Due Diligence</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${allSites.map(s => `
+                <tr>
+                  <td><strong>${esc(s.code || s.id)}</strong></td>
+                  <td>${esc(s.project)}</td>
+                  <td>${esc(s.province)} / ${esc(s.municipality)}</td>
+                  <td>${badge(s.status)}</td>
+                  <td>${esc(s.ddStatus || '-')}</td>
+                </tr>
+              `).join('') || '<tr><td colspan="5" class="empty">Ainda não existem localizações associadas.</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+      </div>
     `;
   } else if (activeView === 'sites') {
     viewHtml = `
@@ -1395,10 +1424,10 @@ function renderClientPortal(activeView = 'overview') {
         <nav class="menu">
           <button class="${activeView === 'overview' ? 'active' : ''}" data-cnav="overview">Visão Geral</button>
           <button class="${activeView === 'requests' ? 'active' : ''}" data-cnav="requests">Meus Pedidos</button>
-          <button class="${activeView === 'projects' ? 'active' : ''}" data-cnav="projects">Meus Projetos</button>
-          <button class="${activeView === 'sites' ? 'active' : ''}" data-cnav="sites">Meus Sites</button>
+          <button class="${activeView === 'projects' ? 'active' : ''}" data-cnav="projects">Projetos &amp; Sites</button>
+          
           <button class="${activeView === 'documents' ? 'active' : ''}" data-cnav="documents">Documentos</button>
-          <button class="${activeView === 'messages' ? 'active' : ''}" data-cnav="messages">Mensagens</button>
+          
           <button class="${activeView === 'profile' ? 'active' : ''}" data-cnav="profile">Perfil</button>
         </nav>
         <div class="sidebar-bottom">
