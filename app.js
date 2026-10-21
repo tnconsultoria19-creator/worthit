@@ -116,6 +116,75 @@ function viewOverview(role) {
   `;
 }
 
+function viewServiceRequests() {
+  return `
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Pedidos de Serviços</h3>
+          <div class="muted">Pedidos submetidos através do website da WorthIt.</div>
+        </div>
+        <button class="btn" type="button" id="btnRefreshServiceRequests">Atualizar</button>
+      </div>
+      <div id="serviceRequestsContent" class="table-wrap">
+        <div class="empty">A carregar pedidos de serviços...</div>
+      </div>
+    </div>
+  `;
+}
+
+async function loadServiceRequests() {
+  const target = document.getElementById('serviceRequestsContent');
+  if (!target) return;
+
+  const renderError = message => {
+    target.innerHTML = `<div class="empty">${esc(message)}</div>`;
+  };
+
+  const refresh = async () => {
+    target.innerHTML = '<div class="empty">A carregar pedidos de serviços...</div>';
+    try {
+      const response = await fetch('/api/service-requests', {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Não foi possível carregar os pedidos.');
+      const requests = Array.isArray(data.requests) ? data.requests : [];
+      if (!requests.length) {
+        renderError('Ainda não existem pedidos de serviços.');
+        return;
+      }
+      target.innerHTML = `
+        <table>
+          <thead><tr><th>Referência</th><th>Serviço</th><th>Cliente</th><th>Contacto</th><th>Localização</th><th>Pedido</th><th>Data</th><th>Estado</th></tr></thead>
+          <tbody>
+            ${requests.map(r => `
+              <tr>
+                <td><strong>${esc(r.id)}</strong></td>
+                <td>${esc(r.service)}</td>
+                <td>${esc(r.name)}${r.company ? `<div class="muted">${esc(r.company)}</div>` : ''}</td>
+                <td>${r.email ? `<div>${esc(r.email)}</div>` : ''}${r.phone ? `<div>${esc(r.phone)}</div>` : ''}</td>
+                <td>${esc(r.location || '-')}</td>
+                <td class="service-request-description">${esc(r.details)}</td>
+                <td>${esc(r.created_at || '-')}</td>
+                <td>${badge(r.status || 'Novo')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    } catch (error) {
+      renderError(error.message || 'Não foi possível carregar os pedidos.');
+    }
+  };
+
+  const refreshButton = document.getElementById('btnRefreshServiceRequests');
+  if (refreshButton) refreshButton.onclick = refresh;
+  await refresh();
+}
+
 function viewLeads(role) {
   const leads = api.getLeads();
   const rows = leads.map(l => `
@@ -911,6 +980,7 @@ function renderInternalPortal(role, activeView) {
     ["leads", "Leads"],
     ["clients", "Clientes"],
     ["requests", "Pedidos de Site"],
+    ["service-requests", "Pedidos de Serviços"],
     ["projects", "Projetos"],
     ["sites", "Sites"],
     ["tasks", "Tarefas"],
@@ -927,6 +997,7 @@ function renderInternalPortal(role, activeView) {
     case 'leads': viewHtml = viewLeads(role); break;
     case 'clients': viewHtml = viewClients(role); break;
     case 'requests': viewHtml = viewRequests(role); break;
+    case 'service-requests': viewHtml = viewServiceRequests(); break;
     case 'projects': viewHtml = viewProjects(role); break;
     case 'sites': viewHtml = viewSites(role); break;
     case 'tasks': viewHtml = viewTasks(role); break;
@@ -944,6 +1015,7 @@ function renderInternalPortal(role, activeView) {
     leads: "Gestão de Leads",
     clients: "Clientes Corporativos",
     requests: "Pedidos de Aquisição de Sites",
+    "service-requests": "Pedidos de Serviços",
     projects: "Projetos de Expansão",
     sites: "Inventário de Sites & Pipeline",
     tasks: "Tarefas & Vistorias",
@@ -975,6 +1047,7 @@ function renderInternalPortal(role, activeView) {
         <div class="sidebar-bottom">
           <a href="client.html" id="linkClientPortal">→ Portal do Cliente</a>
           <a href="index.html">← Website Público</a>
+          <a href="#" id="btnAdminLogout">Terminar sessão</a>
         </div>
       </aside>
 
@@ -1057,6 +1130,20 @@ function renderInternalPortal(role, activeView) {
 
   // Attach modal handlers for current view
   wireEntityModals(role, activeView);
+
+  const logoutLink = document.getElementById('btnAdminLogout');
+  if (logoutLink) {
+    logoutLink.onclick = async (event) => {
+      event.preventDefault();
+      try {
+        await fetch('/api/admin/logout', { method: 'POST', credentials: 'same-origin' });
+      } finally {
+        window.location.replace('/admin.html');
+      }
+    };
+  }
+
+  if (activeView === 'service-requests') loadServiceRequests();
 }
 
 // -------------------------------------------------------------
