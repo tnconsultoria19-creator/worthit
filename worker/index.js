@@ -14,7 +14,7 @@ export default {
         });
       }
 
-      const relativePath = url.pathname.replace(/^\\/+/, "");
+      const relativePath = url.pathname.replace(/^\/+/, "");
       const target = new URL(relativePath, PUBLIC_SITE_ORIGIN);
       target.search = url.search;
 
