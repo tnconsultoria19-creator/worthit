@@ -251,3 +251,18 @@ footer[data-purpose="site-footer"] button { color:#ffffff !important; background
   .worthit-service-grid::-webkit-scrollbar-thumb { background:#bcb5a9; border-radius:4px; }
   .worthit-service-grid::-webkit-scrollbar-track { background:#efede8; }
 }
+
+.demo-mode-banner {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 14px;
+  padding:11px 26px;
+  background:#fbf6ec;
+  border-bottom:1px solid #e8ddca;
+  color:#665237;
+  font-size:11px;
+  line-height:1.5;
+}
+.demo-mode-banner strong { font-size:9px; letter-spacing:.12em; }
+@media(max-width:640px) { .demo-mode-banner { padding:10px 14px; font-size:10px; } }
