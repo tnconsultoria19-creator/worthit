@@ -1,148 +1,413 @@
-<!doctype html>
-<html lang="pt">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WorthIt | Sourcing, Procurement & Project Facilitation in Angola</title>
-  <meta name="description" content="A WorthIt conecta empresas aos locais, fornecedores, parceiros e recursos de que precisam para estabelecer, expandir e executar projetos em Angola.">
-  <meta property="og:title" content="WorthIt | O parceiro local para o seu próximo projeto">
-  <meta property="og:description" content="Sourcing, procurement, identificação de parceiros e facilitação de projetos em Angola.">
-  <meta name="theme-color" content="#17232d">
-  <link rel="stylesheet" href="site.css">
+<!DOCTYPE html>
+
+<html lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WorthIt — Sourcing, Procurement & Facilitação em Angola</title>
+<meta name="description" content="A WorthIt conecta empresas aos locais, fornecedores, parceiros e recursos de que precisam para estabelecer, expandir e executar projetos em Angola."/>
+<meta property="og:title" content="WorthIt — Sourcing, Procurement & Facilitação em Angola"/>
+<meta property="og:description" content="Sourcing, procurement, identificação de parceiros e facilitação de projetos em Angola."/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Original prototype fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#1E1E1E',
+            brandDarker: '#161616',
+            brandBeige: '#F4F2EE',
+            brandGray: '#767676',
+            brandLightGray: '#F9F9F9',
+            brandBorder: '#E5E5E5',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"],
+            sans: ['"Plus Jakarta Sans"],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for precise typographic and subtle layout fidelity -->
+<style data-purpose="custom-typography">
+    .font-editorial {
+      font-family: "Playfair Display";
+      letter-spacing: -0.015em;
+    }
+    .tracking-widest-subtle {
+      letter-spacing: 0.18em;
+    }
+    .tracking-wide-caps {
+      letter-spacing: 0.12em;
+    }
+  </style>
+<style data-purpose="custom-utilities">
+    /* Subtle custom image zoom on hover for interior portfolio feel */
+    .img-zoom-container {
+      overflow: hidden;
+    }
+    .img-zoom-container img {
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .img-zoom-container:hover img {
+      transform: scale(1.03);
+    }
+  </style>
+
+<style data-purpose="prototype-font-lock">
+  /* Lock typography to the supplied prototype rather than relying on Tailwind's
+     generated font utilities or browser fallbacks. */
+  html, body {
+    font-family: "Plus Jakarta Sans";
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body, body.font-sans,
+  button, input, select, textarea {
+    font-family: "Plus Jakarta Sans";
+  }
+
+  h1, h2, h3, h4,
+  .font-serif,
+  .font-editorial {
+    font-family: "Playfair Display";
+  }
+</style>
+
+
+<style data-purpose="hero-contrast-fix">
+  /* Contrast-only correction; the existing hero composition is unchanged. */
+  header[data-purpose="hero-container"] > div:first-child {
+    background-color: #1E1E1E !important;
+    color: #FFFFFF !important;
+  }
+  header[data-purpose="hero-container"] > div:first-child h1,
+  header[data-purpose="hero-container"] > div:first-child .font-serif,
+  header[data-purpose="hero-container"] > div:first-child .font-editorial {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+  }
+  header[data-purpose="hero-container"] > div:first-child p {
+    color: #E5E5E5 !important;
+    opacity: 1 !important;
+  }
+</style>
 </head>
-<body>
-  <a class="skip-link" href="#main">Saltar para o conteúdo</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="wordmark" href="#top" aria-label="WorthIt — início">Worth<span>It</span></a>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a href="#about">Sobre</a>
-        <a href="#services">Serviços</a>
-        <a href="#process">Como trabalhamos</a>
-        <a class="nav-cta" href="#contact">Fale connosco</a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
+<!-- BEGIN: HeroSection -->
+<header class="relative w-full min-h-screen lg:h-[720px] xl:h-[780px] flex flex-col lg:flex-row" data-purpose="hero-container">
+<!-- Hero Left Column (Dark) -->
+<div class="w-full lg:w-1/2 bg-brandDark text-white flex flex-col justify-between px-8 sm:px-16 md:px-24 py-10 lg:py-14 relative z-10">
+<!-- Top Brand Logo -->
+<div class="flex items-center">
+<a class="text-2xl lg:text-3xl font-serif tracking-normal lowercase text-white hover:opacity-80 transition-opacity" href="#">
+          WorthIt
+        </a>
+</div>
+<!-- Main Headline & Subtitle -->
+<div class="my-16 lg:my-auto max-w-lg">
+<h1 class="font-editorial text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.15] tracking-tight mb-8 text-white">
+          As ligações certas.<br/>Para avançar em Angola.
+        </h1>
+<p class="text-neutral-300 text-sm sm:text-base leading-relaxed font-light mb-10 max-w-md opacity-90">
+          A WorthIt conecta empresas aos locais, fornecedores, parceiros e recursos de que precisam para estabelecer, expandir e executar projetos em Angola.
+        </p>
+<div>
+<a class="inline-block bg-white text-brandDark hover:bg-neutral-200 transition-colors text-[11px] font-semibold tracking-wide-caps uppercase px-8 py-3.5 shadow-sm" href="#services">
+            SOLICITAR UM SERVIÇO
+          </a>
+</div>
+</div>
+<!-- Left Column Bottom Spacer for alignment balance -->
+<div class="hidden lg:block h-6"></div>
+</div>
+<!-- Hero Right Column (Light Beige + Plus Jakarta Sansior Hero Visual) -->
+<div class="w-full lg:w-1/2 bg-brandBeige flex flex-col justify-between relative overflow-hidden">
+<!-- Top Navigation Navegação across right panel -->
+<nav aria-label="Main Navigation" class="flex items-center justify-end space-x-8 px-8 sm:px-14 py-10 lg:py-14 z-20">
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#about">SOBRE</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#contact">CONTACTO</a>
+</nav>
+<!-- Featured Warm Plus Jakarta Sansior Image with plants, gold credenza, mirror, orange armchair -->
+<div class="relative w-full h-[400px] lg:h-full flex items-end justify-center px-4 pb-0">
+<img alt="Eclectic styled living room featuring vibrant armchair, round gilded mirror, and flourishing house plants" class="w-full h-full object-cover object-center" src="Gemini_Generated_Image_15pb5e15pb5e15pb.png"/>
+</div>
+</div>
+</header>
+<!-- END: HeroSection -->
+<!-- BEGIN: AboutSection -->
+<section class="py-24 lg:py-32 px-6 sm:px-12 md:px-20 lg:px-28 bg-white" data-purpose="about-studio" id="about">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+<!-- Left Content Column -->
+<div class="w-full lg:w-1/2 max-w-xl">
+<span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-400 mb-6">
+          SITE ACQUISITION ANGOLA
+        </span>
+<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.2] mb-8 font-medium">
+          Os recursos certos.<br/>O próximo passo.
+        </h2>
+<div class="space-y-4 text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-10 max-w-md">
+<p>
+            Apoiamos empresas e particulares a encontrar localizações, fornecedores, prestadores de serviços e parceiros para estabelecer ou expandir a sua actividade em Angola. Actuamos como parceiro de sourcing e coordenação, com um âmbito definido para cada pedido.
+          </p>
+</div>
+<div>
+<a class="inline-block bg-brandDark text-white hover:bg-neutral-800 transition-colors text-[11px] font-semibold tracking-wide-caps uppercase px-9 py-3.5 shadow-sm" href="#about">
+            COMO TRABALHAMOS
+          </a>
+</div>
+</div>
+<!-- Right Dining Plus Jakarta Sansior Image with graphic artwork -->
+<div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+<div class="w-full max-w-lg aspect-[4/3] lg:aspect-[5/4] overflow-hidden shadow-sm">
+<img alt="Modern bright dining room with elegant wooden table and graphic wall art" class="w-full h-full object-cover object-center" src="WhatsApp%20Image%202026-01-05%20at%2012.58.26%20PM.jpeg"/>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ServicesBarSection -->
+<section class="bg-brandDark text-white py-16 lg:py-20 border-t border-neutral-800" data-purpose="services-overview">
+<div class="max-w-7xl mx-auto px-6 sm:px-10">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-800 gap-y-10 sm:gap-y-0 text-center">
+<!-- Service 1: Layout & Space Planning -->
+<div class="flex flex-col items-center px-4 py-2">
+<div class="w-16 h-16 rounded-full border border-neutral-700 flex items-center justify-center mb-6 text-neutral-300">
+<!-- Triangle geometric icon -->
+<svg class="w-7 h-7 stroke-[1.2] stroke-current fill-none" viewbox="0 0 24 24">
+<polygon points="12 4 4 19 20 19"></polygon>
+<polygon class="opacity-40" points="12 9 7.5 19 16.5 19"></polygon>
+</svg>
+</div>
+<h3 class="text-[10px] tracking-wide-caps font-semibold uppercase text-neutral-200">
+            AQUISIÇÃO DE SITES
+          </h3>
+</div>
+<!-- Service 2: Plus Jakarta Sansior Architecture -->
+<div class="flex flex-col items-center px-4 py-2">
+<div class="w-16 h-16 rounded-full border border-neutral-700 flex items-center justify-center mb-6 text-neutral-300">
+<!-- Concentric squares geometric icon -->
+<svg class="w-7 h-7 stroke-[1.2] stroke-current fill-none" viewbox="0 0 24 24">
+<rect height="16" width="16" x="4" y="4"></rect>
+<rect class="opacity-50" height="9" width="9" x="7.5" y="7.5"></rect>
+<rect class="opacity-80" height="3" width="3" x="10.5" y="10.5"></rect>
+</svg>
+</div>
+<h3 class="text-[10px] tracking-wide-caps font-semibold uppercase text-neutral-200">
+            PROCUREMENT & SOURCING
+          </h3>
+</div>
+<!-- Service 3: Plus Jakarta Sansior Design -->
+<div class="flex flex-col items-center px-4 py-2">
+<div class="w-16 h-16 rounded-full border border-neutral-700 flex items-center justify-center mb-6 text-neutral-300">
+<!-- Nested diamond geometric icon -->
+<svg class="w-7 h-7 stroke-[1.2] stroke-current fill-none" viewbox="0 0 24 24">
+<rect height="14" transform="rotate(45 12 12)" width="14" x="5" y="5"></rect>
+<rect class="opacity-50" height="8" transform="rotate(45 12 12)" width="8" x="8" y="8"></rect>
+</svg>
+</div>
+<h3 class="text-[10px] tracking-wide-caps font-semibold uppercase text-neutral-200">
+            PARCEIROS & FORNECEDORES
+          </h3>
+</div>
+<!-- Service 4: Project Coordination -->
+<div class="flex flex-col items-center px-4 py-2">
+<div class="w-16 h-16 rounded-full border border-neutral-700 flex items-center justify-center mb-6 text-neutral-300">
+<!-- Isometric cube geometric icon -->
+<svg class="w-7 h-7 stroke-[1.2] stroke-current fill-none" viewbox="0 0 24 24">
+<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"></path>
+<path d="M12 12l8-4.5"></path>
+<path d="M12 12v9"></path>
+<path d="M12 12L4 7.5"></path>
+</svg>
+</div>
+<h3 class="text-[10px] tracking-wide-caps font-semibold uppercase text-neutral-200">
+            FACILITAÇÃO DE PROJECTOS
+          </h3>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ServicesBarSection -->
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow eyebrow-light">Sourcing · Procurement · Facilitação de projetos</p>
-          <h1>As ligações certas para fazer o seu negócio avançar em Angola.</h1>
-          <p class="hero-intro">A WorthIt conecta empresas aos locais, fornecedores, parceiros e recursos de que precisam para estabelecer, expandir e executar projetos em Angola.</p>
-          <div class="hero-actions">
-            <a class="button button-light" href="#services">Conheça os serviços <span aria-hidden="true">↘</span></a>
-            <a class="text-link text-link-light" href="#process">Como trabalhamos</a>
-          </div>
-          <p class="hero-note">Um ponto de contacto. Soluções adaptadas a cada necessidade.</p>
-        </div>
-        <div class="hero-visual">
-          <img src="https://images.openai.com/static-rsc-4/IAt8KKE5yPNH6xchWF4s_OfPQ3SElJumRerTuE4sRyhLbJBocx88qPzoM_AsOh6ukKmftBEe_0YPfNR86l6q-vmDp4_aQq3SMOKyczTsYcg4Ri5uSwUlakvw8LtDWdchH8hXXAPoYGp7BmN2tYHnugZC_gWzpcfweQpDDsgw1Lk?purpose=inline" alt="Infraestrutura de telecomunicações e torre de comunicações" loading="eager">
-          <div class="image-caption"><span>WORTHIT</span><span>ANGOLA · REDE DE OPORTUNIDADES</span></div>
-        </div>
-      </div>
-    </section>
+<!-- BEGIN: WorthItServicesSection -->
+<section class="py-20 lg:py-28 bg-white" data-purpose="worthit-services" id="services">
+<div class="max-w-6xl mx-auto px-6 sm:px-8">
+<div class="max-w-2xl mb-12 lg:mb-16">
+<span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-400 mb-5">ÁREAS DE ACTUAÇÃO</span>
+<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] mb-5 font-medium">Sourcing e facilitação, adaptados ao seu projecto.</h2>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">Um ponto de contacto para encontrar locais, fornecedores, prestadores de serviços e parceiros. O âmbito e os honorários são acordados conforme cada necessidade.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+<article id="service-sites" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">01 · LOCALIZAÇÃO</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Aquisição de Sites & Inteligência de Localização</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Identificação e avaliação de locais para infraestruturas de telecomunicações, expansão comercial e projectos de desenvolvimento.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Pesquisa e identificação de locais</li><li>— Coordenação de viabilidade e due diligence</li><li>— Facilitação de negociações com proprietários</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-procurement" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">02 · FORNECIMENTO</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Procurement & Sourcing</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa de produtos, materiais, equipamentos e fornecedores segundo os requisitos do cliente.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Materiais e equipamentos de construção</li><li>— Veículos, maquinaria e peças sobressalentes</li><li>— Cotações e comparação de fornecedores</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-expansion" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">03 · NEGÓCIOS</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Instalação & Expansão de Negócios</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Apoio a empresas que pretendem estabelecer ou ampliar a sua presença no mercado angolano.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Pesquisa de instalações e localizações</li><li>— Recolha de informação de mercado</li><li>— Identificação de fornecedores operacionais</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-partners" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">04 · LIGAÇÕES LOCAIS</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Correspondência de Parceiros & Fornecedores</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Ligação a potenciais prestadores de serviços, fornecedores, empreiteiros e parceiros comerciais.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Identificação de fornecedores locais</li><li>— Introduções comerciais</li><li>— Pesquisa de parceiros para projectos</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-agriculture" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">05 · AGRICULTURA</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Agricultura & Agro-Sourcing</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Facilitação de acesso a recursos agrícolas, insumos, compradores e oportunidades comerciais.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Equipamentos e insumos agrícolas</li><li>— Terras agrícolas, irrigação e abastecimento</li><li>— Compradores e parceiros de processamento</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-energy" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">06 · ENERGIA</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Energia & Solar</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa de fornecedores e equipamentos para necessidades energéticas comerciais.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Painéis solares e prestadores de instalação</li><li>— Inversores, baterias e geradores</li><li>— Aprovisionamento de equipamento energético</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+<article id="service-construction" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">07 · DESENVOLVIMENTO</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Construção & Facilitação de Desenvolvimento</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa e coordenação dos recursos necessários a projectos de construção e desenvolvimento.</p>
+<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Engenheiros, arquitectos e empreiteiros</li><li>— Materiais, equipamento e instalações</li><li>— Coordenação de fornecedores e intervenientes</li></ul>
+<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
+</article>
+</div>
+<div class="mt-12 border-t border-neutral-200 pt-7 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+<div class="max-w-xl">
+<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-3">Possível serviço futuro</span>
+<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium mb-2">Trade & Barter</h3>
+<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">A WorthIt poderá facilitar conversas entre empresas interessadas em trocar bens ou serviços com valor acordado. Esta possibilidade está em avaliação e não faz parte, por enquanto, dos serviços principais.</p>
+</div>
+<a class="shrink-0 inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500 mt-1" href="#contact">FALAR CONNOSCO ↗</a>
+</div>
+</div>
+</section>
+<!-- END: WorthItServicesSection -->
+<!-- BEGIN: WorthItProcessSection -->
+<section class="py-16 lg:py-20 bg-[#F4F2EE]" data-purpose="worthit-process" id="process">
+<div class="max-w-6xl mx-auto px-6 sm:px-8">
+<div class="max-w-2xl mb-10">
+<span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-500 mb-5">COMO TRABALHAMOS</span>
+<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] mb-4 font-medium">Um processo claro, do pedido ao próximo passo.</h2>
+<p class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">A WorthIt é um parceiro de sourcing e coordenação, com comunicação directa e âmbito definido para cada pedido.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border border-neutral-200 bg-white divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">01</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Pedido</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">O cliente explica o que precisa, onde e com que finalidade.</p></div>
+<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">02</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Clarificação</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Confirmamos prioridades, prazo e requisitos.</p></div>
+<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">03</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Pesquisa</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Identificamos fornecedores, locais, recursos ou parceiros.</p></div>
+<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">04</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Proposta</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Apresentamos o âmbito e as condições acordadas.</p></div>
+<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">05</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Seguimento</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Coordenamos os próximos passos com os intervenientes.</p></div>
+</div>
+</div>
+</section>
+<!-- END: WorthItProcessSection -->
 
-    <section class="intro-section section" id="about">
-      <div class="container intro-grid">
-        <div>
-          <p class="eyebrow">Sobre a WorthIt</p>
-          <h2>Encontramos caminhos. Coordenamos os próximos passos.</h2>
-        </div>
-        <div class="intro-copy">
-          <p>A WorthIt é uma empresa independente e de operação enxuta, dedicada a sourcing, procurement, facilitação de negócios e apoio a projetos em Angola.</p>
-          <p>Identificamos oportunidades, aproximamos clientes de fornecedores e prestadores de serviços relevantes, reunimos informação e apoiamos a coordenação até à próxima etapa. O nosso papel é facilitar o processo — não apresentar-nos como proprietários de todos os ativos ou executores de todos os trabalhos.</p>
-        </div>
-      </div>
-      <div class="container value-strip">
-        <div><span class="value-number">01</span><strong>Um ponto de contacto</strong><p>Um interlocutor para necessidades diversas.</p></div>
-        <div><span class="value-number">02</span><strong>Coordenação local</strong><p>Pesquisa e articulação com intervenientes em Angola.</p></div>
-        <div><span class="value-number">03</span><strong>Âmbito claro</strong><p>O trabalho e os honorários são definidos por projeto.</p></div>
-      </div>
-    </section>
-
-    <section class="services-section section" id="services">
-      <div class="container section-heading">
-        <div>
-          <p class="eyebrow">O que fazemos</p>
-          <h2>Serviços, sem complicação.</h2>
-        </div>
-        <p>Escolha a área que melhor corresponde ao seu pedido. Ajustamos a pesquisa e a coordenação à realidade de cada projeto.</p>
-      </div>
-
-      <div class="container services-grid">
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/IAt8KKE5yPNH6xchWF4s_OfPQ3SElJumRerTuE4sRyhLbJBocx88qPzoM_AsOh6ukKmftBEe_0YPfNR86l6q-vmDp4_aQq3SMOKyczTsYcg4Ri5uSwUlakvw8LtDWdchH8hXXAPoYGp7BmN2tYHnugZC_gWzpcfweQpDDsgw1Lk?purpose=inline" alt="Torre para infraestrutura de telecomunicações" loading="lazy">
-          <div class="service-content"><span class="service-number">01</span><h3>Aquisição de Sites & Inteligência de Localização</h3><p>Identificação e avaliação de locais para telecomunicações, expansão comercial e desenvolvimento.</p><ul><li>Pesquisa e identificação de locais</li><li>Coordenação de viabilidade e due diligence</li><li>Facilitação de negociações com proprietários</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/Kx9LSxW9arpxSLfzyp7-o7dIJK090z-VWJSPELmhTE74v95yjNyf8QRXSq965NhOOUt2Mvr7WNuIVh1vSXpooL-sKO8TSU0CQQTIvrpvOypXfkr_UZiPSeUYhzZwUJqR8xmRsBEPCWT3prFopJ_X0c-rHcZOAl9UitxPerahtLk?purpose=inline" alt="Materiais de construção e fornecimento" loading="lazy">
-          <div class="service-content"><span class="service-number">02</span><h3>Procurement & Sourcing</h3><p>Pesquisa de produtos, materiais, equipamentos e fornecedores conforme os seus requisitos.</p><ul><li>Materiais e equipamentos de construção</li><li>Veículos, maquinaria e peças</li><li>Cotações e comparação de fornecedores</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/lOFBNZQ_nJ4Fzy31WwMCmY74BuKCqp5UJqqYUtyzcSLWXrw282YiqnUR8VURTvy3SFBvNsHVdnO6xroznPACXQIxTBq72B73lE8ix7uS1ViDJXed6q6vzfNN_Mr0wEykPgO0KspbYzvmeyTmyDbhNvTXqhZtHDWJa9BHuaHU8Aw?purpose=inline" alt="Espaço comercial e instalações empresariais em Luanda" loading="lazy">
-          <div class="service-content"><span class="service-number">03</span><h3>Instalação & Expansão de Negócios</h3><p>Apoio a empresas que pretendem iniciar ou ampliar a sua presença em Angola.</p><ul><li>Pesquisa de instalações e localizações</li><li>Recolha de informação de mercado</li><li>Identificação de fornecedores operacionais</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/jNWRjcYjxUlaTf-5BnP3iBja5bjpBJGmR5kgBJ9tNPODpJEnZ3o6qwXQL_d1LmFWMcF8XacvoU1eUDJ5Qljx8KuPXCG4rtDHZ5Lcjqpsu89P_Xo23FoIyPbUgyrC8wekwfnLtAYcj0Fuyd5jYT9y39iPauAAjMzUFrb07O3DocTQ?purpose=inline" alt="Profissional de serviços financeiros e negócios" loading="lazy">
-          <div class="service-content"><span class="service-number">04</span><h3>Correspondência de Parceiros & Fornecedores</h3><p>Ligamos clientes a potenciais prestadores de serviços, empreiteiros, fornecedores e parceiros comerciais.</p><ul><li>Identificação e triagem de fornecedores</li><li>Introduções comerciais</li><li>Pesquisa de parceiros para projetos</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/UNLw5pFt4qL4zX?purpose=inline" alt="Recursos e insumos agrícolas" loading="lazy">
-          <div class="service-content"><span class="service-number">05</span><h3>Agricultura & Agro-Sourcing</h3><p>Facilitação de acesso a recursos, fornecedores e oportunidades agrícolas.</p><ul><li>Equipamentos e insumos agrícolas</li><li>Terras agrícolas e sistemas de irrigação</li><li>Compradores, fornecedores e parceiros de processamento</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/gHQL8v4HX0Rc1TEeJuQDnW9I9b04vgkT6ZW7CpOGfo-q_PeNQ7_OYcAQ_eWVcmt4jnFjoB9HprrEpVTrNYLSPozd4COLkIAAin3WalqpLUyVJ5UHDzKvIna3D52mDZ8iGayysrCHFWZLMphVX0Cs-neg4g1jS5w-T2QX41BzWJc?purpose=inline" alt="Painéis solares e soluções de energia" loading="lazy">
-          <div class="service-content"><span class="service-number">06</span><h3>Energia & Solar</h3><p>Pesquisa de fornecedores e equipamentos para necessidades energéticas comerciais.</p><ul><li>Painéis e prestadores de instalação</li><li>Inversores, baterias e geradores</li><li>Aprovisionamento de equipamento energético</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.openai.com/static-rsc-4/fczNNKvklcDV7m9-rYf6GEXrExpWS3kgeRpVNpiV-E4BdwL24GEhvUzTcPe8sY3SrrweJlhtlYwyAeOmp07Hm5lKIeM4qb2TQnpuy-VVBxUAKp9QNwmTLDJ9PcsFAVkz66R31pa3lzi5yw4M4ykpbIMHDEQQGpumURz9Xr-kAe4?purpose=inline" alt="Materiais e fornecimentos para construção" loading="lazy">
-          <div class="service-content"><span class="service-number">07</span><h3>Construção & Facilitação de Desenvolvimento</h3><p>Pesquisa e coordenação dos recursos necessários a projetos de construção e desenvolvimento.</p><ul><li>Engenheiros, arquitetos e empreiteiros</li><li>Materiais, equipamento e instalações</li><li>Coordenação de fornecedores e intervenientes</li></ul><a href="#contact" class="card-link">Discutir este serviço <span aria-hidden="true">↗</span></a></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="process-section section" id="process">
-      <div class="container section-heading">
-        <div><p class="eyebrow">Como funciona</p><h2>Um processo simples, do pedido ao próximo passo.</h2></div>
-        <p>O âmbito, o prazo e os honorários são definidos de acordo com a necessidade e a complexidade do projeto.</p>
-      </div>
-      <div class="container process-list">
-        <div class="process-step"><span>01</span><div><h3>Partilhe o seu pedido</h3><p>Explique o que procura, onde e para que finalidade.</p></div></div>
-        <div class="process-step"><span>02</span><div><h3>Clarificamos os requisitos</h3><p>Confirmamos prioridades, prazos e o âmbito do apoio necessário.</p></div></div>
-        <div class="process-step"><span>03</span><div><h3>Pesquisamos e coordenamos</h3><p>Identificamos opções e articulamos com fornecedores ou parceiros relevantes.</p></div></div>
-        <div class="process-step"><span>04</span><div><h3>Acordamos o âmbito e os custos</h3><p>Apresentamos uma proposta de sourcing, consultoria, coordenação ou facilitação.</p></div></div>
-        <div class="process-step"><span>05</span><div><h3>Acompanhamos os próximos passos</h3><p>Facilitamos a comunicação e o seguimento com os intervenientes envolvidos.</p></div></div>
-      </div>
-    </section>
-
-    <section class="future-section" aria-labelledby="future-title">
-      <div class="container future-inner">
-        <div><p class="eyebrow">Possível serviço futuro</p><h2 id="future-title">Trade & Barter</h2></div>
-        <div><p>A WorthIt poderá também facilitar conversas entre empresas interessadas em trocar bens ou serviços de valor acordado. Esta área está em avaliação e não faz parte, por enquanto, dos serviços principais.</p></div>
-      </div>
-    </section>
-
-    <section class="contact-section section" id="contact">
-      <div class="container contact-inner">
-        <div><p class="eyebrow eyebrow-light">Vamos conversar</p><h2>Tem um pedido ou projeto em mente?</h2><p>Descreva o que precisa. A WorthIt ajudará a clarificar os requisitos e a definir o próximo passo.</p></div>
-        <div class="contact-note">
-          <p>O apoio pode ser prestado através de sourcing, consultoria, coordenação ou facilitação, com honorários ou comissões acordados conforme o projeto.</p>
-          <a class="button button-light" href="mailto:?subject=Pedido%20de%20servi%C3%A7o%20WorthIt">Preparar email de contacto <span aria-hidden="true">↗</span></a>
-          <p class="small-note">O seu programa de email abrirá uma nova mensagem. Adicione o endereço de contacto da WorthIt antes de enviar.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="wordmark footer-wordmark" href="#top">Worth<span>It</span></a>
-      <p>Parceiro local de sourcing e facilitação de projetos em Angola.</p>
-      <nav aria-label="Navegação de rodapé"><a href="#about">Sobre</a><a href="#services">Serviços</a><a href="#process">Como trabalhamos</a><a href="#contact">Contacto</a><a href="client.html">Portal</a></nav>
-      <small>© 2026 WorthIt. Todos os direitos reservados.</small>
-    </div>
-  </footer>
-</body>
-</html>
+<!-- BEGIN: ContactSection -->
+<section class="flex flex-col lg:flex-row w-full min-h-[460px] bg-brandDark" data-purpose="contact-cta" id="contact">
+<!-- Left Column: Dark call to action content -->
+<div class="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-16 md:px-24 py-16 lg:py-20 text-white">
+<div class="max-w-md">
+<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-medium mb-6 leading-tight">
+          Tem um projecto<br/>em mente?
+        </h2>
+<p class="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mb-8 max-w-sm">
+          Descreva o que procura, onde e para que finalidade. A WorthIt ajuda a clarificar os requisitos e a coordenar os próximos passos com fornecedores e parceiros relevantes.
+        </p>
+<div>
+<a class="inline-block bg-white text-brandDark hover:bg-neutral-200 transition-colors text-[11px] font-semibold tracking-wide-caps uppercase px-8 py-3.5 shadow-sm" href="mailto:WorthIt-interior@mail.com">
+            EXPLORAR SERVIÇOS
+          </a>
+</div>
+</div>
+</div>
+<!-- Right Column: Close-up details of terracotta velvet sofa -->
+<div class="w-full lg:w-1/2 h-[340px] lg:h-auto overflow-hidden relative">
+<img alt="Vibrant terracotta orange sofa detail with soft pillow accent" class="w-full h-full object-cover object-center" src="WhatsApp%20Image%202026-01-05%20at%2012.58.26%20PM.jpeg"/>
+</div>
+</section>
+<!-- END: ContactSection -->
+<!-- BEGIN: FooterSection -->
+<footer class="bg-white text-neutral-800 pt-20 pb-12 border-t border-neutral-100" data-purpose="site-footer">
+<div class="max-w-6xl mx-auto px-6 sm:px-8">
+<!-- Footer Columns Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-14 pb-16">
+<!-- Column 1: Navegação -->
+<div class="space-y-4">
+<h4 class="font-editorial text-base sm:text-lg font-semibold text-neutral-900 tracking-tight">Navegação</h4>
+<ul class="space-y-2 text-xs text-neutral-500 font-normal">
+<li><a class="hover:text-neutral-900 transition-colors" href="#">Início</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#about">Sobre</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#services">Áreas de Actuação</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#process">Recursos</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#contact">Contacto</a></li>
+</ul>
+</div>
+<!-- Column 2: Siga-nos -->
+<div class="space-y-4">
+<h4 class="font-editorial text-base sm:text-lg font-semibold text-neutral-900 tracking-tight">Serviços</h4>
+<ul class="space-y-2 text-xs text-neutral-500 font-normal">
+<li><a class="hover:text-neutral-900 transition-colors" href="#service-sites">Aquisição de Sites</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#service-procurement">Procurement & Sourcing</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#service-expansion">Expansão de Negócios</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#service-partners">Parceiros Locais</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="#service-construction">Construção & Desenvolvimento</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact Info -->
+<div class="space-y-4">
+<h4 class="font-editorial text-base sm:text-lg font-semibold text-neutral-900 tracking-tight">Contacto</h4>
+<div class="space-y-2 text-xs text-neutral-500 font-normal">
+<p>Angola · Cobertura nacional</p>
+<p>Sourcing, fornecedores e coordenação de projectos.</p>
+</div>
+</div>
+<!-- Column 4: Newsletter Signup -->
+<div class="space-y-4 col-span-2 sm:col-span-1">
+<h4 class="font-editorial text-base sm:text-lg font-semibold text-neutral-900 tracking-tight">Solicitar um Serviço</h4>
+<form class="flex items-center w-full" data-purpose="newsletter-subscription-form" onsubmit="event.preventDefault();">
+<label class="sr-only" for="newsletter-email">Email ou telefone</label>
+<input class="w-full bg-[#F4F4F4] text-xs text-neutral-800 placeholder-neutral-400 px-3 py-2.5 border-0 focus:ring-1 focus:ring-neutral-800 outline-none" id="newsletter-email" placeholder="Email para contacto" required="" type="email"/>
+<button aria-label="Subscribe" class="bg-brandDark hover:bg-neutral-800 text-white px-3.5 py-2.5 flex items-center justify-center transition-colors" type="submit">
+<!-- Mail icon matching reference -->
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+</form>
+</div>
+</div>
+<!-- Copyright Sub-line -->
+<div class="pt-8 border-t border-neutral-100 flex items-center justify-start text-[11px] text-neutral-400">
+<p>© 2026 WorthIt</p>
+</div>
+</div>
+</footer>
+<!-- END: FooterSection -->
+</body></html>
