@@ -278,3 +278,18 @@ section[data-purpose="worthit-process"] {
   background-position:center !important;
   background-repeat:no-repeat !important;
 }
+
+
+/* Desktop-only, subtle legibility increase for service-area labels. */
+@media (min-width: 851px) {
+  [data-purpose="services-overview"].worthit-service-strip h3 {
+    font-size: 12px !important;
+    letter-spacing: .10em !important;
+  }
+  section[data-purpose="worthit-services"] .worthit-service-caption {
+    font-size: 12px !important;
+  }
+  section[data-purpose="worthit-services"] > div > div:first-child > span {
+    font-size: 12px !important;
+  }
+}
