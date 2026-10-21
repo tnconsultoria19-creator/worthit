@@ -100,6 +100,7 @@
     opacity: 1 !important;
   }
 </style>
+<link rel="stylesheet" href="worthit-services.css">
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
 <!-- BEGIN: HeroSection -->
@@ -137,6 +138,7 @@
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#contact">CONTACTO</a>
+<a class="worthit-admin-link" href="dashboard.html?view=overview">ADMIN SIGN IN</a>
 </nav>
 <!-- Featured Warm Plus Jakarta Sansior Image with plants, gold credenza, mirror, orange armchair -->
 <div class="relative w-full h-[400px] lg:h-full flex items-end justify-center px-4 pb-0">
@@ -177,7 +179,7 @@
 </section>
 <!-- END: AboutSection -->
 <!-- BEGIN: ServicesBarSection -->
-<section class="bg-brandDark text-white py-16 lg:py-20 border-t border-neutral-800" data-purpose="services-overview">
+<section class="bg-brandDark text-white py-16 lg:py-20 border-t border-neutral-800" data-purpose="services-overview" class="worthit-service-strip">
 <div class="max-w-7xl mx-auto px-6 sm:px-10">
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-800 gap-y-10 sm:gap-y-0 text-center">
 <!-- Service 1: Layout & Space Planning -->
@@ -239,95 +241,52 @@
 </div>
 </section>
 <!-- END: ServicesBarSection -->
-
-<!-- BEGIN: WorthItServicesSection -->
-<section class="py-20 lg:py-28 bg-white" data-purpose="worthit-services" id="services">
-<div class="max-w-6xl mx-auto px-6 sm:px-8">
-<div class="max-w-2xl mb-12 lg:mb-16">
-<span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-400 mb-5">ÁREAS DE ACTUAÇÃO</span>
-<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] mb-5 font-medium">Sourcing e facilitação, adaptados ao seu projecto.</h2>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">Um ponto de contacto para encontrar locais, fornecedores, prestadores de serviços e parceiros. O âmbito e os honorários são acordados conforme cada necessidade.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-<article id="service-sites" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">01 · LOCALIZAÇÃO</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Aquisição de Sites & Inteligência de Localização</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Identificação e avaliação de locais para infraestruturas de telecomunicações, expansão comercial e projectos de desenvolvimento.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Pesquisa e identificação de locais</li><li>— Coordenação de viabilidade e due diligence</li><li>— Facilitação de negociações com proprietários</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-procurement" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">02 · FORNECIMENTO</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Procurement & Sourcing</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa de produtos, materiais, equipamentos e fornecedores segundo os requisitos do cliente.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Materiais e equipamentos de construção</li><li>— Veículos, maquinaria e peças sobressalentes</li><li>— Cotações e comparação de fornecedores</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-expansion" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">03 · NEGÓCIOS</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Instalação & Expansão de Negócios</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Apoio a empresas que pretendem estabelecer ou ampliar a sua presença no mercado angolano.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Pesquisa de instalações e localizações</li><li>— Recolha de informação de mercado</li><li>— Identificação de fornecedores operacionais</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-partners" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">04 · LIGAÇÕES LOCAIS</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Correspondência de Parceiros & Fornecedores</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Ligação a potenciais prestadores de serviços, fornecedores, empreiteiros e parceiros comerciais.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Identificação de fornecedores locais</li><li>— Introduções comerciais</li><li>— Pesquisa de parceiros para projectos</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-agriculture" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">05 · AGRICULTURA</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Agricultura & Agro-Sourcing</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Facilitação de acesso a recursos agrícolas, insumos, compradores e oportunidades comerciais.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Equipamentos e insumos agrícolas</li><li>— Terras agrícolas, irrigação e abastecimento</li><li>— Compradores e parceiros de processamento</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-energy" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">06 · ENERGIA</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Energia & Solar</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa de fornecedores e equipamentos para necessidades energéticas comerciais.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Painéis solares e prestadores de instalação</li><li>— Inversores, baterias e geradores</li><li>— Aprovisionamento de equipamento energético</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-<article id="service-construction" class="border border-neutral-200 p-6 sm:p-7 flex flex-col">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-4">07 · DESENVOLVIMENTO</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium leading-snug mb-4">Construção & Facilitação de Desenvolvimento</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-5">Pesquisa e coordenação dos recursos necessários a projectos de construção e desenvolvimento.</p>
-<ul class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light space-y-2 mb-6"><li>— Engenheiros, arquitectos e empreiteiros</li><li>— Materiais, equipamento e instalações</li><li>— Coordenação de fornecedores e intervenientes</li></ul>
-<a class="mt-auto inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500" href="#contact">SOLICITAR ESTE SERVIÇO ↗</a>
-</article>
-</div>
-<div class="mt-12 border-t border-neutral-200 pt-7 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-<div class="max-w-xl">
-<span class="block text-[10px] tracking-widest-subtle uppercase text-neutral-400 mb-3">Possível serviço futuro</span>
-<h3 class="font-editorial text-xl sm:text-2xl text-neutral-900 font-medium mb-2">Trade & Barter</h3>
-<p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">A WorthIt poderá facilitar conversas entre empresas interessadas em trocar bens ou serviços com valor acordado. Esta possibilidade está em avaliação e não faz parte, por enquanto, dos serviços principais.</p>
-</div>
-<a class="shrink-0 inline-block text-[10px] font-semibold tracking-wide-caps uppercase text-neutral-800 hover:text-neutral-500 mt-1" href="#contact">FALAR CONNOSCO ↗</a>
-</div>
-</div>
-</section>
-<!-- END: WorthItServicesSection -->
 <!-- BEGIN: WorthItProcessSection -->
-<section class="py-16 lg:py-20 bg-[#F4F2EE]" data-purpose="worthit-process" id="process">
-<div class="max-w-6xl mx-auto px-6 sm:px-8">
-<div class="max-w-2xl mb-10">
-<span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-500 mb-5">COMO TRABALHAMOS</span>
-<h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] mb-4 font-medium">Um processo claro, do pedido ao próximo passo.</h2>
-<p class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">A WorthIt é um parceiro de sourcing e coordenação, com comunicação directa e âmbito definido para cada pedido.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border border-neutral-200 bg-white divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
-<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">01</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Pedido</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">O cliente explica o que precisa, onde e com que finalidade.</p></div>
-<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">02</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Clarificação</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Confirmamos prioridades, prazo e requisitos.</p></div>
-<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">03</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Pesquisa</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Identificamos fornecedores, locais, recursos ou parceiros.</p></div>
-<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">04</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Proposta</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Apresentamos o âmbito e as condições acordadas.</p></div>
-<div class="p-5 sm:p-6"><span class="block text-[10px] tracking-widest-subtle text-neutral-400 mb-4">05</span><h3 class="font-editorial text-lg text-neutral-900 font-medium mb-3">Seguimento</h3><p class="text-xs text-neutral-500 leading-relaxed font-light">Coordenamos os próximos passos com os intervenientes.</p></div>
-</div>
-</div>
+<section class="py-14 lg:py-16 bg-[#F4F2EE]" data-purpose="worthit-process" id="process">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="max-w-2xl mb-8">
+      <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] font-medium">Como trabalhamos</h2>
+    </div>
+    <div class="worthit-process-grid">
+      <article class="worthit-process-step"><span>01</span><h3>Pedido</h3><p>O cliente explica o que precisa, onde e com que finalidade.</p></article>
+      <article class="worthit-process-step"><span>02</span><h3>Clarificação</h3><p>Confirmamos prioridades, prazo e requisitos.</p></article>
+      <article class="worthit-process-step"><span>03</span><h3>Pesquisa</h3><p>Identificamos fornecedores, locais, recursos ou parceiros.</p></article>
+      <article class="worthit-process-step"><span>04</span><h3>Proposta</h3><p>Apresentamos o âmbito e as condições acordadas.</p></article>
+      <article class="worthit-process-step"><span>05</span><h3>Seguimento</h3><p>Coordenamos os próximos passos com os intervenientes.</p></article>
+    </div>
+  </div>
 </section>
 <!-- END: WorthItProcessSection -->
+
+
+<!-- BEGIN: WorthItServicesSection -->
+<section class="py-16 lg:py-20 bg-white" data-purpose="worthit-services" id="services">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="mb-9 lg:mb-11 max-w-2xl">
+      <span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-400 mb-4">ÁREAS DE ACTUAÇÃO</span>
+      <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-[1.15] mb-4 font-medium">Sourcing & Facilitação</h2>
+      <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">Um ponto de contacto para encontrar locais, fornecedores, recursos e parceiros em Angola. Seleccione um serviço para saber mais.</p>
+    </div>
+    <div class="worthit-service-grid" id="worthit-service-grid" aria-label="Serviços WorthIt"></div>
+  </div>
+</section>
+<!-- END: WorthItServicesSection -->
+<!-- BEGIN: WorthItFutureServiceBanner -->
+<section class="py-10 lg:py-12 bg-white" data-purpose="future-service" id="future-service">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="worthit-future-banner">
+      <div class="worthit-future-image"><img src="https://images.openai.com/static-rsc-4/Kx9LSxW9arpxSLfzyp7-o7dIJK090z-VWJSPELmhTE74v95yjNyf8QRXSq965NhOOUt2Mvr7WNuIVh1vSXpooL-sKO8TSU0CQQTIvrpvOypXfkr_UZiPSeUYhzZwUJqR8xmRsBEPCWT3prFopJ_X0c-rHcZOAl9UitxPerahtLk?purpose=inline" alt="Materiais e fornecimentos para empresas" loading="lazy"></div>
+      <div class="worthit-future-copy">
+        <span class="block text-[10px] sm:text-[11px] font-medium tracking-widest-subtle uppercase text-neutral-400 mb-3">POSSÍVEL SERVIÇO FUTURO · EM AVALIAÇÃO</span>
+        <h2 class="font-editorial text-2xl sm:text-3xl text-neutral-900 font-medium mb-3">Trade & Barter</h2>
+        <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-0">Possível facilitação de trocas entre empresas com bens ou serviços de valor acordado. Esta área está em avaliação e não integra, por enquanto, os serviços principais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END: WorthItFutureServiceBanner -->
+
+
 
 <!-- BEGIN: ContactSection -->
 <section class="flex flex-col lg:flex-row w-full min-h-[460px] bg-brandDark" data-purpose="contact-cta" id="contact">
@@ -367,6 +326,7 @@
 <li><a class="hover:text-neutral-900 transition-colors" href="#services">Áreas de Actuação</a></li>
 <li><a class="hover:text-neutral-900 transition-colors" href="#process">Recursos</a></li>
 <li><a class="hover:text-neutral-900 transition-colors" href="#contact">Contacto</a></li>
+<li><a class="hover:text-neutral-900 transition-colors" href="dashboard.html?view=overview">Admin Sign In</a></li>
 </ul>
 </div>
 <!-- Column 2: Siga-nos -->
@@ -410,4 +370,5 @@
 </div>
 </footer>
 <!-- END: FooterSection -->
+<script src="worthit-services.js" defer></script>
 </body></html>
