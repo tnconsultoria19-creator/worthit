@@ -304,3 +304,41 @@
 @media print{
   .worthit-simple-topbar,.worthit-simple-demo,.worthit-simple-columns,.worthit-simple-footer{display:none!important}
 }
+
+
+/* WorthIt admin refresh: rounded forms, navy accents and small focused work areas. */
+.worthit-simple-dashboard{background-color:#F2F5F8;background-image:radial-gradient(circle at 3% 4%,rgba(50,83,119,.06),transparent 24%),radial-gradient(circle at 97% 95%,rgba(50,83,119,.05),transparent 24%);color:#172331}
+.worthit-simple-topbar{background:#fff;border-bottom-color:#E0E7EF}.worthit-logo-mark{border-radius:12px;background:#0B2340}.worthit-simple-top-actions button,.worthit-simple-count{border-radius:999px}
+.worthit-simple-count{border-color:#D9E1EA}.worthit-simple-panel{border:1px solid #DFE6EE;border-radius:20px;box-shadow:0 9px 30px rgba(17,39,63,.055);overflow:hidden}
+.worthit-simple-panel-head{border-bottom-color:#EDF1F5}.worthit-simple-panel-head h2{letter-spacing:-.035em}
+.worthit-button{border-radius:999px;min-height:42px;padding:10px 16px}.worthit-button-dark{background:#0B2340;border-color:#0B2340}.worthit-button-dark:hover{background:#173B60;border-color:#173B60}
+.worthit-search{border-radius:12px;border-color:#DCE4EC;background:#F8FAFC}.worthit-client-row{border-radius:12px;border-bottom-color:transparent;margin:3px 0;width:100%}.worthit-client-row.is-selected{border-color:#9FB5CA;background:#F1F6FB}
+.worthit-client-detail{border:1px solid #E4EAF1;border-radius:15px;background:#F8FAFC}.worthit-doc-type{border-radius:13px;background:#F1F5F9}.worthit-doc-type button{border-radius:10px}.worthit-doc-type button.is-active{border-color:#D6E0EA}
+.worthit-invoice-field input,.worthit-invoice-field select,.worthit-invoice-field textarea{border:1px solid #D7E0E9;border-radius:11px;min-height:44px;padding:11px 12px;background:#fff;font-size:12px;transition:border-color .15s ease,box-shadow .15s ease}
+.worthit-invoice-field textarea{min-height:80px}.worthit-invoice-field input:focus,.worthit-invoice-field select:focus,.worthit-invoice-field textarea:focus{border-color:#5B7FA3;box-shadow:0 0 0 3px rgba(45,88,130,.12)}
+.worthit-selected-client{border-radius:11px;border-color:#DCE4EC;background:#F8FAFC}.worthit-service-option{border-radius:11px;border-color:#E0E7EF;min-height:44px}.worthit-service-option.is-active{border-color:#9DB4CA;background:#F1F6FB}
+.worthit-service-radio{width:15px;height:15px;flex-basis:15px}.worthit-invoice-total{border-radius:14px;border-color:#E0E7EF;background:#F2F6FA}.worthit-download-button{min-height:48px}.worthit-company-details summary{padding:16px 0}
+.worthit-client-dialog{border:1px solid #DDE5ED;border-radius:20px;overflow:hidden}.worthit-client-dialog form{padding:25px}.worthit-dialog-x{width:38px;height:38px;border-radius:50%}
+.worthit-simple-demo{border-color:#DCE6F0}.worthit-simple-footer a{color:#234D76}.worthit-simple-footer a:hover{color:#0B2340}
+.worthit-workspace-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}
+.worthit-workspace-panel{min-width:0;border:1px solid #DFE6EE;border-radius:20px;background:#fff;box-shadow:0 9px 30px rgba(17,39,63,.045);overflow:hidden}
+.worthit-workspace-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:20px 22px 15px;border-bottom:1px solid #EDF1F5}
+.worthit-workspace-head h2{margin:0 0 3px;font-size:18px;letter-spacing:-.035em}.worthit-workspace-head p{margin:0;color:#7B8795;font-size:11px;line-height:1.55}
+.worthit-workspace-badge{flex:0 0 auto;padding:6px 10px;background:#F0F5FA;color:#365B80;border-radius:999px;font-size:10px;font-weight:700}
+.worthit-workspace-form{display:grid;gap:11px;padding:16px 20px 18px;border-bottom:1px solid #EDF1F5}.worthit-workspace-form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
+.worthit-workspace-form input:not([type=file]),.worthit-workspace-form select,.worthit-workspace-form textarea{width:100%;min-width:0;min-height:42px;padding:10px 12px;border:1px solid #D7E0E9;border-radius:11px;background:#fff;color:#213247;font-size:12px}
+.worthit-workspace-form input:focus,.worthit-workspace-form select:focus,.worthit-workspace-form textarea:focus{outline:0;border-color:#5B7FA3;box-shadow:0 0 0 3px rgba(45,88,130,.12)}
+.worthit-workspace-file-input{padding:9px!important;background:#F8FAFC!important;border:1px dashed #BDCBDA!important;border-radius:12px!important}
+.worthit-workspace-hint{margin:0;color:#8893A0;font-size:10px;line-height:1.55}.worthit-workspace-list{padding:8px 14px 14px;display:grid;gap:7px}
+.worthit-workspace-empty{padding:22px 8px;color:#8792A0;font-size:12px;line-height:1.6;text-align:center}
+.worthit-workspace-row{display:flex;align-items:center;gap:12px;min-width:0;padding:11px;border:1px solid #E9EEF3;border-radius:13px;background:#fff}
+.worthit-workspace-file-icon{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:11px;background:#EEF3F8;color:#234C75;font-size:9px;font-weight:800}
+.worthit-workspace-row-main{flex:1;min-width:0}.worthit-workspace-row-main strong{display:block;overflow-wrap:anywhere;color:#24364A;font-size:11px;line-height:1.45}.worthit-workspace-row-main small{display:block;margin-top:4px;color:#84909D;font-size:10px;line-height:1.45}
+.worthit-workspace-row-actions{display:flex;flex:0 0 auto;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:6px}.worthit-workspace-row-actions select{max-width:130px;min-height:34px;padding:6px 8px;border:1px solid #DCE4EC;border-radius:999px;background:#F9FBFD;color:#40566D;font-size:10px}
+.worthit-workspace-mini-btn{width:34px;height:34px;border:1px solid #DFE6EE;border-radius:50%;background:#fff;color:#4B6178;font-size:15px}.worthit-workspace-mini-btn:hover{background:#F0F5FA}
+.worthit-task-filters{display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px 4px}.worthit-task-filter{min-height:34px;padding:7px 11px;border:1px solid transparent;border-radius:999px;background:#F4F6F8;color:#647386;font-size:10px;font-weight:700}.worthit-task-filter.is-active{border-color:#D2DFEB;background:#EAF1F8;color:#244D74}
+.worthit-task-due{color:#697A8D!important}.worthit-workspace-link{border:0;background:transparent;padding:0;color:#234D76;font-size:11px;font-weight:700;text-align:left;cursor:pointer}.worthit-workspace-link:hover{text-decoration:underline}
+.worthit-workspace-row-actions select[data-workdoc-status="Concluído"],.worthit-workspace-row-actions select[data-task-status="Concluído"]{background:#EDF6F0;border-color:#CFE4D4;color:#346344}
+.worthit-workspace-row-actions select[data-workdoc-status="À espera"],.worthit-workspace-row-actions select[data-task-status="À espera"]{background:#FBF5E9;border-color:#EDE0C4;color:#81662F}
+@media(max-width:900px){.worthit-workspace-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.worthit-simple-main{padding-left:12px;padding-right:12px}.worthit-simple-topbar{border-radius:0 0 16px 16px}.worthit-simple-heading{margin-bottom:18px}.worthit-simple-panel,.worthit-workspace-panel{border-radius:17px}.worthit-simple-panel-head{gap:9px}.worthit-workspace-head{padding:17px 14px 13px}.worthit-workspace-form{padding:13px}.worthit-workspace-form-row{grid-template-columns:1fr}.worthit-workspace-list{padding:8px 10px 12px}.worthit-workspace-row{align-items:flex-start;gap:8px;flex-wrap:wrap}.worthit-workspace-file-icon{width:34px;height:34px;flex-basis:34px}.worthit-workspace-row-actions{width:100%;justify-content:space-between;padding-left:42px}.worthit-workspace-row-actions select{max-width:none;flex:1}.worthit-task-filters{padding-left:12px;padding-right:12px}.worthit-workspace-head h2{font-size:17px}.worthit-client-dialog form{padding:18px}}

@@ -12,7 +12,7 @@
 <!-- Original prototype fonts: Playfair Display & Plus Jakarta Sans -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind Configuration -->
 <script>
     tailwind.config = {
@@ -27,8 +27,8 @@
             brandBorder: '#E5E5E5',
           },
           fontFamily: {
-            serif: ['"Playfair Display"],
-            sans: ['"Plus Jakarta Sans"],
+            serif: ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
           }
         }
       }
@@ -37,7 +37,7 @@
 <!-- Custom Styles for precise typographic and subtle layout fidelity -->
 <style data-purpose="custom-typography">
     .font-editorial {
-      font-family: "Playfair Display";
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
       letter-spacing: -0.015em;
     }
     .tracking-widest-subtle {
@@ -78,7 +78,8 @@
   h1, h2, h3, h4,
   .font-serif,
   .font-editorial {
-    font-family: "Playfair Display";
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    letter-spacing: -0.035em;
   }
 </style>
 
@@ -100,18 +101,12 @@
     opacity: 1 !important;
   }
 </style>
-<link rel="stylesheet" href="worthit-services.css?v=20261027a">
+<link rel="stylesheet" href="worthit-services.css?v=20261027b">
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
 <a class="worthit-skip-link" href="#about">Saltar para o conteúdo</a>
 <!-- BEGIN: HeroSection -->
 <header class="relative w-full min-h-screen lg:h-[720px] xl:h-[780px] flex flex-col lg:flex-row" data-purpose="hero-container">
-<nav aria-label="Navegação principal móvel" class="worthit-mobile-nav flex items-center justify-end space-x-8 px-4 py-3 z-20">
-<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#about">SOBRE</a>
-<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
-<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
-<a class="worthit-admin-link worthit-mobile-admin" href="https://worthit.tnconsultoria19.workers.dev/admin.html">ADMIN SIGN IN</a>
-</nav>
 <!-- Hero Left Column (Dark) -->
 <div class="worthit-hero-left w-full lg:w-1/2 bg-brandDark text-white flex flex-col justify-between px-8 sm:px-16 md:px-24 py-10 lg:py-14 relative z-10">
 <!-- Top Brand Logo -->
@@ -329,5 +324,5 @@
 </div>
 </footer>
 <!-- END: FooterSection -->
-<script src="worthit-services.js?v=20261027a" defer></script>
+<script src="worthit-services.js?v=20261027b" defer></script>
 </body></html>
