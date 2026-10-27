@@ -434,3 +434,30 @@ section[data-purpose="worthit-services"] > div > div:first-child > span { color:
     animation-iteration-count:1 !important; transition-duration:.01ms !important;
   }
 }
+
+
+/* Explicit pressed and busy states for interactive service controls. */
+.worthit-service-card:active { transform:translateY(0); border-color:#8E8068; }
+.worthit-dialog-close:active,
+.worthit-dialog-request:active,
+.worthit-dialog-close-text:active,
+.worthit-footer-service-link:active { filter:brightness(.9); }
+.worthit-dialog-request[aria-busy="true"] {
+  cursor:progress;
+  opacity:.86;
+}
+.worthit-dialog-request[aria-busy="true"]::before {
+  content:"";
+  display:inline-block;
+  width:11px;
+  height:11px;
+  margin-right:2px;
+  border:2px solid currentColor;
+  border-right-color:transparent;
+  border-radius:50%;
+  animation:worthit-spin .7s linear infinite;
+}
+@keyframes worthit-spin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce) {
+  .worthit-dialog-request[aria-busy="true"]::before { animation:none; }
+}

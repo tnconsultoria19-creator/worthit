@@ -165,6 +165,7 @@
       return;
     }
     requestSubmit.disabled = true;
+    requestSubmit.setAttribute("aria-busy", "true");
     requestSubmit.textContent = "A enviar...";
     try {
       const response = await fetch("https://worthit.tnconsultoria19.workers.dev/api/service-requests", {
@@ -187,10 +188,12 @@
       requestStatus.classList.add("is-success");
       requestForm.reset();
       requestSubmit.textContent = "Pedido enviado ✓";
+      requestSubmit.removeAttribute("aria-busy");
     } catch (error) {
       requestStatus.textContent = error.message || "Não foi possível enviar o pedido. Tente novamente.";
       requestStatus.classList.add("is-error");
       requestSubmit.disabled = false;
+      requestSubmit.removeAttribute("aria-busy");
       requestSubmit.textContent = "Tentar novamente ↗";
     }
   });
