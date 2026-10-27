@@ -208,6 +208,30 @@
 
   // General enquiry form directly below the five process steps.
   const generalForm = document.getElementById("worthit-general-request-form");
+  const inquiryModal = document.getElementById("worthit-inquiry-modal");
+  const openInquiryButton = document.getElementById("worthit-open-inquiry");
+  const closeInquiryButtons = document.querySelectorAll("[data-close-inquiry]");
+  const closeInquiry = () => {
+    if (!inquiryModal) return;
+    inquiryModal.hidden = true;
+    document.body.classList.remove("worthit-inquiry-open");
+    if (openInquiryButton) openInquiryButton.focus();
+  };
+  if (openInquiryButton && inquiryModal) {
+    openInquiryButton.addEventListener("click", () => {
+      inquiryModal.hidden = false;
+      document.body.classList.add("worthit-inquiry-open");
+      const firstField = inquiryModal.querySelector('input[name="name"]');
+      if (firstField) firstField.focus();
+    });
+    closeInquiryButtons.forEach(button => button.addEventListener("click", closeInquiry));
+    inquiryModal.addEventListener("click", event => {
+      if (event.target === inquiryModal) closeInquiry();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && !inquiryModal.hidden) closeInquiry();
+    });
+  }
   if (generalForm) {
     const generalStatus = document.getElementById("worthit-general-request-status");
     const generalSubmit = document.getElementById("worthit-general-request-submit");
@@ -216,11 +240,6 @@
       generalStatus.textContent = "";
       generalStatus.className = "worthit-request-status";
       const data = Object.fromEntries(new FormData(generalForm).entries());
-      if (!String(data.email || "").trim() && !String(data.phone || "").trim()) {
-        generalStatus.textContent = "Indique pelo menos um contacto: email ou telefone.";
-        generalStatus.classList.add("is-error");
-        return;
-      }
       generalSubmit.disabled = true;
       generalSubmit.setAttribute("aria-busy", "true");
       generalSubmit.textContent = "A enviar...";
@@ -245,6 +264,11 @@
         generalForm.reset();
         generalSubmit.textContent = "Pedido enviado ✓";
         generalSubmit.removeAttribute("aria-busy");
+        setTimeout(() => {
+          closeInquiry();
+          generalSubmit.disabled = false;
+          generalSubmit.textContent = "Enviar pedido ↗";
+        }, 2200);
       } catch (error) {
         generalStatus.textContent = error.message || "Não foi possível enviar o pedido. Tente novamente.";
         generalStatus.classList.add("is-error");

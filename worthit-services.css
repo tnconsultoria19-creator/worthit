@@ -561,3 +561,47 @@ footer[data-purpose="site-footer"]{background-color:#111!important;background-im
   .worthit-process-inquiry {padding:18px; border-radius:16px}
   .worthit-general-request-actions button {width:100%}
 }
+
+
+/* Compact call-to-action; the enquiry form only appears after the visitor clicks. */
+.worthit-process-inquiry {display:block!important;max-width:860px;margin:32px auto 0!important;padding:28px 32px!important;border-radius:18px;background:#fff;border:1px solid #e2dfd9;box-shadow:0 8px 24px rgba(20,20,20,.04)}
+.worthit-process-inquiry-copy {max-width:680px!important;padding:0!important;margin:0 auto;text-align:center}
+.worthit-process-inquiry-copy h3 {font-size:clamp(23px,2.5vw,30px);margin:8px 0 10px}
+.worthit-process-inquiry-copy p {max-width:55ch;margin:0 auto 20px;line-height:1.65}
+.worthit-open-inquiry {display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 24px;border:1px solid #111;border-radius:999px;background:#111;color:#fff;font:600 13px/1.4 "Plus Jakarta Sans",Arial,sans-serif;cursor:pointer;transition:background .15s ease,transform .15s ease}
+.worthit-open-inquiry:hover {background:#333;transform:translateY(-1px)}
+.worthit-open-inquiry:focus-visible,.worthit-inquiry-close:focus-visible,.worthit-inquiry-cancel:focus-visible {outline:3px solid #8b9aab;outline-offset:3px}
+.worthit-inquiry-modal[hidden] {display:none!important}
+.worthit-inquiry-modal {position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px}
+.worthit-inquiry-modal .worthit-inquiry-backdrop {position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(12,15,18,.58);backdrop-filter:blur(4px);cursor:pointer}
+.worthit-inquiry-dialog {position:relative;z-index:1;width:min(640px,100%);max-height:min(90vh,900px);overflow:auto;padding:30px;background:#fff;border:1px solid #e0e4e8;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.22)}
+.worthit-inquiry-dialog h3 {margin:7px 38px 8px 0;font-size:26px;line-height:1.3;font-weight:600}
+.worthit-inquiry-intro {margin:0 0 22px;color:#626a72;font-size:13px;line-height:1.6}
+.worthit-inquiry-close {position:absolute;top:16px;right:16px;width:40px;height:40px;border:1px solid #e1e5e9;border-radius:50%;background:#fff;color:#222;font-size:25px;line-height:1;cursor:pointer}
+.worthit-general-request-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.worthit-general-request-grid .worthit-request-field {display:grid;align-content:start;gap:7px;min-width:0}
+.worthit-general-request-grid .worthit-request-field.full {grid-column:1/-1}
+.worthit-general-request-grid label {color:#333;font-size:12px;font-weight:600;line-height:1.5}
+.worthit-general-request-grid input:not([type=radio]),.worthit-general-request-grid textarea {width:100%;min-width:0;min-height:46px;padding:11px 13px;border:1px solid #d5d9de;border-radius:10px;background:#fff;color:#202020;font:13px/1.5 "Plus Jakarta Sans",Arial,sans-serif}
+.worthit-general-request-grid textarea {min-height:88px;resize:vertical}
+.worthit-service-choices {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.worthit-service-choice {display:flex!important;align-items:center;gap:9px;min-height:44px;padding:10px 12px;border:1px solid #dce1e6;border-radius:10px;background:#fff;cursor:pointer;font-size:12px!important;font-weight:500!important;line-height:1.4!important}
+.worthit-service-choice:has(input:checked) {border-color:#292929;background:#f4f4f3;box-shadow:inset 0 0 0 1px #292929}
+.worthit-service-choice input[type=radio] {width:16px;height:16px;min-width:16px;min-height:16px;margin:0;accent-color:#111}
+.worthit-service-choice span {flex:1}
+.worthit-general-request-grid input:focus-visible,.worthit-general-request-grid textarea:focus-visible {outline:3px solid rgba(35,47,59,.2);outline-offset:2px;border-color:#5e6872}
+.worthit-general-request-grid label span {color:#777;font-weight:400}
+.worthit-general-request-actions {display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:18px}
+.worthit-inquiry-cancel {min-height:44px;padding:10px 18px;border:1px solid #d5d9de;border-radius:999px;background:#fff;color:#333;font:600 12px/1.4 "Plus Jakarta Sans",Arial,sans-serif;cursor:pointer}
+body.worthit-inquiry-open {overflow:hidden}
+@media(max-width:560px) {
+ .worthit-process-inquiry {padding:22px 16px!important;margin-top:24px!important}
+ .worthit-inquiry-modal {padding:10px}
+ .worthit-inquiry-dialog {padding:24px 16px 18px;border-radius:16px;max-height:94vh}
+ .worthit-inquiry-dialog h3 {font-size:23px}
+ .worthit-general-request-grid,.worthit-service-choices {grid-template-columns:minmax(0,1fr);gap:12px}
+ .worthit-general-request-grid .worthit-request-field.full {grid-column:auto}
+ .worthit-service-choice {min-height:44px}
+ .worthit-general-request-actions {flex-direction:column-reverse;align-items:stretch}
+ .worthit-general-request-actions button {width:100%}
+}
