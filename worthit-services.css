@@ -605,3 +605,34 @@ body.worthit-inquiry-open {overflow:hidden}
  .worthit-general-request-actions {flex-direction:column-reverse;align-items:stretch}
  .worthit-general-request-actions button {width:100%}
 }
+
+
+/* Mobile image framing: give the hero portrait more vertical room and lengthen
+   the image beside the About copy without changing desktop composition. */
+@media (max-width: 640px) {
+  header[data-purpose="hero-container"] .worthit-hero-right > div:last-child {
+    height: 540px !important;
+    min-height: 540px !important;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-right > div:last-child img {
+    object-position: center 24% !important;
+  }
+  section[data-purpose="about-studio"] > div > div:last-child > div {
+    aspect-ratio: auto !important;
+    height: 340px !important;
+    min-height: 340px !important;
+  }
+  section[data-purpose="about-studio"] > div > div:last-child img {
+    object-position: center center !important;
+  }
+}
+@media (max-width: 380px) {
+  header[data-purpose="hero-container"] .worthit-hero-right > div:last-child {
+    height: 500px !important;
+    min-height: 500px !important;
+  }
+  section[data-purpose="about-studio"] > div > div:last-child > div {
+    height: 320px !important;
+    min-height: 320px !important;
+  }
+}
