@@ -498,3 +498,29 @@ footer[data-purpose="site-footer"]>div>div:last-child{border-top-color:rgba(203,
 footer[data-purpose="site-footer"]{background-color:#111!important;background-image:linear-gradient(rgba(0,0,0,.91),rgba(0,0,0,.94)),var(--worthit-pattern)!important;border-top-color:#333!important}
 .worthit-footer-service-link{background:#222!important;border-color:#595959!important}
 .worthit-footer-service-link:hover{background:#333!important;border-color:#999!important}
+
+
+/* Round remaining website actions and service cards for a consistent interaction style. */
+[data-purpose="about-studio"] a[href="#process"] {
+  display:inline-flex!important; align-items:center; justify-content:center;
+  min-height:44px; border-radius:999px!important; padding:12px 24px!important;
+}
+.worthit-dialog-request {
+  min-height:44px!important; border-radius:999px!important; padding:12px 18px!important;
+}
+.worthit-dialog-close-text {
+  min-height:40px; border-radius:999px!important; padding:10px 14px!important;
+}
+.worthit-service-card { border-radius:15px!important; }
+.worthit-service-image { border-radius:14px 14px 0 0; }
+.worthit-service-action {
+  border-radius:999px!important; align-self:center; margin:0 12px 10px;
+  padding:10px 14px!important; background:#f5f4f1!important;
+}
+.worthit-dialog-request-dark { background:#111!important; border-color:#111!important; }
+.worthit-dialog-request-dark:hover { background:#333!important; border-color:#333!important; }
+@media(max-width:640px) {
+  [data-purpose="about-studio"] a[href="#process"] { width:auto; max-width:100%; text-align:center; }
+  .worthit-dialog-footer { flex-wrap:wrap; }
+  .worthit-dialog-footer>button { flex:1 1 auto; }
+}

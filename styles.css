@@ -342,3 +342,59 @@
 .worthit-workspace-row-actions select[data-workdoc-status="À espera"],.worthit-workspace-row-actions select[data-task-status="À espera"]{background:#FBF5E9;border-color:#EDE0C4;color:#81662F}
 @media(max-width:900px){.worthit-workspace-grid{grid-template-columns:1fr}}
 @media(max-width:540px){.worthit-simple-main{padding-left:12px;padding-right:12px}.worthit-simple-topbar{border-radius:0 0 16px 16px}.worthit-simple-heading{margin-bottom:18px}.worthit-simple-panel,.worthit-workspace-panel{border-radius:17px}.worthit-simple-panel-head{gap:9px}.worthit-workspace-head{padding:17px 14px 13px}.worthit-workspace-form{padding:13px}.worthit-workspace-form-row{grid-template-columns:1fr}.worthit-workspace-list{padding:8px 10px 12px}.worthit-workspace-row{align-items:flex-start;gap:8px;flex-wrap:wrap}.worthit-workspace-file-icon{width:34px;height:34px;flex-basis:34px}.worthit-workspace-row-actions{width:100%;justify-content:space-between;padding-left:42px}.worthit-workspace-row-actions select{max-width:none;flex:1}.worthit-task-filters{padding-left:12px;padding-right:12px}.worthit-workspace-head h2{font-size:17px}.worthit-client-dialog form{padding:18px}}
+
+
+/* Final layout pass: consistent rounded actions and a stable responsive admin workspace. */
+#dashboardRoot .worthit-simple-dashboard button { border-radius:999px!important; min-height:40px; }
+#dashboardRoot .worthit-simple-dashboard .worthit-client-row { border-radius:12px!important; min-height:60px; }
+#dashboardRoot .worthit-simple-dashboard .worthit-service-option { border-radius:12px!important; text-align:left; }
+#dashboardRoot .worthit-simple-dashboard .worthit-doc-type button { border-radius:11px!important; }
+#dashboardRoot .worthit-simple-dashboard .worthit-workspace-mini-btn,
+#dashboardRoot .worthit-simple-dashboard .worthit-dialog-x { border-radius:50%!important; }
+#dashboardRoot .worthit-simple-dashboard .worthit-workspace-link { min-height:0; border-radius:5px!important; }
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-top-actions button { padding-inline:16px; }
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-main {
+  width:min(1480px,100%); padding-top:clamp(22px,3vw,38px);
+  padding-left:clamp(14px,3vw,42px); padding-right:clamp(14px,3vw,42px);
+}
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-heading { align-items:center; }
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-columns {
+  grid-template-columns:minmax(300px,.88fr) minmax(0,1.12fr); gap:22px;
+}
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-panel { min-width:0; border-radius:20px; }
+#dashboardRoot .worthit-simple-dashboard .worthit-simple-panel-head { flex-wrap:wrap; }
+#dashboardRoot .worthit-simple-dashboard .worthit-invoice-form { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#dashboardRoot .worthit-simple-dashboard .worthit-workspace-grid {
+  grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:20px;
+}
+#dashboardRoot .worthit-simple-dashboard .worthit-workspace-panel { min-width:0; border-radius:20px; }
+#dashboardRoot .worthit-simple-dashboard .worthit-workspace-form-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#dashboardRoot .worthit-simple-dashboard input,
+#dashboardRoot .worthit-simple-dashboard select,
+#dashboardRoot .worthit-simple-dashboard textarea { max-width:100%; }
+#dashboardRoot .worthit-simple-dashboard button:focus-visible,
+#dashboardRoot .worthit-simple-dashboard a:focus-visible,
+#dashboardRoot .worthit-simple-dashboard input:focus-visible,
+#dashboardRoot .worthit-simple-dashboard select:focus-visible,
+#dashboardRoot .worthit-simple-dashboard textarea:focus-visible { outline:2px solid #777; outline-offset:3px; }
+@media(max-width:1050px) {
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-columns,
+  #dashboardRoot .worthit-simple-dashboard .worthit-workspace-grid { grid-template-columns:minmax(0,1fr); }
+  #dashboardRoot .worthit-simple-dashboard .worthit-client-list { max-height:310px; }
+}
+@media(max-width:700px) {
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-heading { align-items:flex-start; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-panel-head { align-items:flex-start; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-panel-head>div { min-width:0; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-invoice-form { grid-template-columns:minmax(0,1fr); }
+  #dashboardRoot .worthit-simple-dashboard .worthit-invoice-field.full,
+  #dashboardRoot .worthit-simple-dashboard .worthit-service-picker.full { grid-column:auto; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-workspace-form-row { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:420px) {
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-top-actions button { font-size:10px!important; padding:9px 11px; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-panel-head { flex-direction:column; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-simple-count { white-space:normal; }
+  #dashboardRoot .worthit-simple-dashboard .worthit-doc-type { grid-template-columns:minmax(0,1fr); }
+  #dashboardRoot .worthit-simple-dashboard .worthit-doc-type button { min-height:42px; }
+}
