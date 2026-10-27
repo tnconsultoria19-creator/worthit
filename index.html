@@ -85,28 +85,35 @@
 
 <style data-purpose="hero-contrast-fix">
   /* Contrast-only correction; the existing hero composition is unchanged. */
-  header[data-purpose="hero-container"] > div:first-child {
+  header[data-purpose="hero-container"] .worthit-hero-left {
     background-color: #1E1E1E !important;
     color: #FFFFFF !important;
   }
-  header[data-purpose="hero-container"] > div:first-child h1,
-  header[data-purpose="hero-container"] > div:first-child .font-serif,
-  header[data-purpose="hero-container"] > div:first-child .font-editorial {
+  header[data-purpose="hero-container"] .worthit-hero-left h1,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-serif,
+  header[data-purpose="hero-container"] .worthit-hero-left .font-editorial {
     color: #FFFFFF !important;
     opacity: 1 !important;
   }
-  header[data-purpose="hero-container"] > div:first-child p {
+  header[data-purpose="hero-container"] .worthit-hero-left p {
     color: #E5E5E5 !important;
     opacity: 1 !important;
   }
 </style>
-<link rel="stylesheet" href="worthit-services.css?v=20261021h">
+<link rel="stylesheet" href="worthit-services.css?v=20261027a">
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
+<a class="worthit-skip-link" href="#about">Saltar para o conteúdo</a>
 <!-- BEGIN: HeroSection -->
 <header class="relative w-full min-h-screen lg:h-[720px] xl:h-[780px] flex flex-col lg:flex-row" data-purpose="hero-container">
+<nav aria-label="Navegação principal móvel" class="worthit-mobile-nav flex items-center justify-end space-x-8 px-4 py-3 z-20">
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#about">SOBRE</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
+<a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
+<a class="worthit-admin-link worthit-mobile-admin" href="https://worthit.tnconsultoria19.workers.dev/admin.html">ADMIN SIGN IN</a>
+</nav>
 <!-- Hero Left Column (Dark) -->
-<div class="w-full lg:w-1/2 bg-brandDark text-white flex flex-col justify-between px-8 sm:px-16 md:px-24 py-10 lg:py-14 relative z-10">
+<div class="worthit-hero-left w-full lg:w-1/2 bg-brandDark text-white flex flex-col justify-between px-8 sm:px-16 md:px-24 py-10 lg:py-14 relative z-10">
 <!-- Top Brand Logo -->
 <div class="flex items-center">
 <a class="text-2xl lg:text-3xl font-serif tracking-normal text-white hover:opacity-80 transition-opacity" href="#">
@@ -131,9 +138,9 @@
 <div class="hidden lg:block h-6"></div>
 </div>
 <!-- Hero Right Column (Light Beige + Plus Jakarta Sansior Hero Visual) -->
-<div class="w-full lg:w-1/2 bg-brandBeige flex flex-col justify-between relative overflow-hidden">
+<div class="worthit-hero-right w-full lg:w-1/2 bg-brandBeige flex flex-col justify-between relative overflow-hidden">
 <!-- Top Navigation Navegação across right panel -->
-<nav aria-label="Main Navigation" class="flex items-center justify-end space-x-8 px-8 sm:px-14 py-10 lg:py-14 z-20">
+<nav aria-label="Main Navigation" class="worthit-desktop-nav flex items-center justify-end space-x-8 px-8 sm:px-14 py-10 lg:py-14 z-20">
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#about">SOBRE</a>
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#services">ÁREAS DE ACTUAÇÃO</a>
 <a class="text-[11px] tracking-wide-caps font-semibold text-neutral-800 hover:text-black uppercase transition-colors" href="#process">COMO TRABALHAMOS</a>
@@ -311,16 +318,8 @@
 <!-- Column 4: Newsletter Signup -->
 <div class="space-y-4 col-span-2 sm:col-span-1">
 <h4 class="font-editorial text-base sm:text-lg font-semibold text-neutral-900 tracking-tight">Solicitar um Serviço</h4>
-<form class="flex items-center w-full" data-purpose="newsletter-subscription-form" onsubmit="event.preventDefault();">
-<label class="sr-only" for="newsletter-email">Email ou telefone</label>
-<input class="w-full bg-[#F4F4F4] text-xs text-neutral-800 placeholder-neutral-400 px-3 py-2.5 border-0 focus:ring-1 focus:ring-neutral-800 outline-none" id="newsletter-email" placeholder="Email para contacto" required="" type="email"/>
-<button aria-label="Subscribe" class="bg-brandDark hover:bg-neutral-800 text-white px-3.5 py-2.5 flex items-center justify-center transition-colors" type="submit">
-<!-- Mail icon matching reference -->
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
-</svg>
-</button>
-</form>
+<p class="worthit-footer-service-copy">Explore os serviços disponíveis e escolha aquele que corresponde ao que precisa.</p>
+<a class="worthit-footer-service-link" href="#services">Explorar serviços <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 <!-- Copyright Sub-line -->

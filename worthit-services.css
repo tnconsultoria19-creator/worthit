@@ -340,3 +340,97 @@ section[data-purpose="worthit-process"] {
     overflow-wrap:anywhere;
   }
 }
+
+
+/* Accessibility and interaction states: keep WorthIt's existing charcoal, beige and white visual system. */
+.worthit-skip-link {
+  position:fixed; top:8px; left:8px; z-index:10000;
+  transform:translateY(-160%); padding:12px 16px;
+  background:#1E1E1E; color:#FFFFFF; border:2px solid #FFFFFF;
+  font:600 13px/1.3 "Plus Jakarta Sans",Arial,sans-serif; text-decoration:none;
+}
+.worthit-skip-link:focus { transform:translateY(0); outline:3px solid #8B7355; outline-offset:2px; }
+header[data-purpose="hero-container"] nav > a:not(.worthit-admin-link) {
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:40px; padding:8px 3px; line-height:1.35;
+  color:#262626 !important; text-decoration:none;
+}
+.worthit-admin-link { min-height:40px; align-items:center; }
+.worthit-admin-link:focus-visible,
+.worthit-hero-cta:focus-visible,
+.worthit-service-card:focus-visible,
+.worthit-dialog-close:focus-visible,
+.worthit-dialog-request:focus-visible,
+.worthit-dialog-close-text:focus-visible,
+.worthit-request-field input:focus-visible,
+.worthit-request-field textarea:focus-visible,
+.worthit-footer-service-link:focus-visible,
+footer[data-purpose="site-footer"] input:focus-visible,
+footer[data-purpose="site-footer"] button:focus-visible {
+  outline:3px solid #8B7355 !important; outline-offset:3px !important;
+}
+.worthit-admin-link:active,
+.worthit-hero-cta:active,
+.worthit-dialog-request:active,
+.worthit-footer-service-link:active { transform:translateY(1px); }
+.worthit-dialog-close { width:40px; height:40px; }
+.worthit-dialog-close-text { min-height:40px; }
+.worthit-dialog-request { min-height:42px; }
+.worthit-request-field input:hover,
+.worthit-request-field textarea:hover { border-color:#AAA197; }
+.worthit-request-field input[aria-invalid="true"],
+.worthit-request-field textarea[aria-invalid="true"],
+.worthit-request-field input:user-invalid,
+.worthit-request-field textarea:user-invalid { border-color:#9B3C33 !important; }
+.worthit-request-field input:disabled,
+.worthit-request-field textarea:disabled { background:#F0EEEA; color:#66615A; cursor:not-allowed; }
+.worthit-dialog-request:disabled,
+.worthit-admin-link[aria-disabled="true"],
+.worthit-hero-cta[aria-disabled="true"] { opacity:.58; cursor:not-allowed; transform:none; }
+.worthit-request-status.is-error { border-color:#9B3C33; color:#7E2F28; }
+.worthit-request-status.is-success { border-color:#426E42; color:#2E592E; }
+
+/* Labels in pale sections need readable contrast, even at small sizes. */
+section[data-purpose="about-studio"] > div > div > span,
+section[data-purpose="worthit-services"] > div > div:first-child > span { color:#737373 !important; }
+.worthit-process-step p { color:#5F5B55; }
+
+/* The footer action now takes visitors to working service request cards. */
+.worthit-footer-service-copy { margin:0; max-width:260px; color:#C9C5BE; font-size:12px; line-height:1.65; }
+.worthit-footer-service-link {
+  display:inline-flex; align-items:center; justify-content:space-between; gap:18px;
+  min-height:44px; width:max-content; max-width:100%; margin-top:6px; padding:10px 13px;
+  border:1px solid #777067; background:#1A1A1A; color:#FFFFFF !important;
+  font-size:11px; font-weight:700; text-decoration:none;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+.worthit-footer-service-link:hover { background:#333333; border-color:#C9C5BE; color:#FFFFFF !important; }
+
+/* Mobile navigation is placed first, retaining a natural flex-wrap layout—not a grid. */
+.worthit-mobile-nav { display:none; }
+@media (max-width:1023px) {
+  header[data-purpose="hero-container"] .worthit-mobile-nav {
+    display:flex !important; flex-direction:row; flex-wrap:wrap;
+    justify-content:flex-end; align-items:center; gap:8px 14px;
+    width:100%; padding:12px 18px; background:#F4F2EE; border-bottom:1px solid #DFD9CF;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav > a:not(.worthit-admin-link) {
+    min-height:40px; padding:8px 3px; font-size:11px; letter-spacing:.10em; white-space:normal;
+  }
+  header[data-purpose="hero-container"] .worthit-mobile-nav .worthit-mobile-admin {
+    min-height:40px; padding:9px 11px; font-size:9px; letter-spacing:.08em;
+  }
+  header[data-purpose="hero-container"] .worthit-hero-right .worthit-desktop-nav { display:none !important; }
+  header[data-purpose="hero-container"] .worthit-hero-right > div:last-child { height:400px !important; }
+}
+@media (max-width:640px) {
+  .worthit-footer-service-link { min-height:44px; }
+  .worthit-service-strip h3 { line-height:1.4; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto !important; }
+  *,*::before,*::after {
+    scroll-behavior:auto !important; animation-duration:.01ms !important;
+    animation-iteration-count:1 !important; transition-duration:.01ms !important;
+  }
+}

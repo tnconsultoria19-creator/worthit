@@ -79,11 +79,11 @@
             </div>
             <div class="worthit-request-field">
               <label for="worthit-request-email">Email</label>
-              <input id="worthit-request-email" name="email" type="email" autocomplete="email" maxlength="200">
+              <input id="worthit-request-email" name="email" type="email" autocomplete="email" maxlength="200" aria-describedby="worthit-request-contact-hint">
             </div>
             <div class="worthit-request-field">
               <label for="worthit-request-phone">Telefone / WhatsApp</label>
-              <input id="worthit-request-phone" name="phone" type="tel" autocomplete="tel" maxlength="60">
+              <input id="worthit-request-phone" name="phone" type="tel" autocomplete="tel" maxlength="60" aria-describedby="worthit-request-contact-hint">
             </div>
             <div class="worthit-request-field full">
               <label for="worthit-request-location">Localização do projecto</label>
@@ -94,7 +94,7 @@
               <textarea id="worthit-request-details" name="details" rows="4" required maxlength="4000" placeholder="Partilhe os requisitos, quantidades, prazos ou outros detalhes relevantes."></textarea>
             </div>
           </div>
-          <p class="worthit-request-hint">Indique pelo menos um contacto: email ou telefone.</p>
+          <p class="worthit-request-hint" id="worthit-request-contact-hint">Indique pelo menos um contacto: email ou telefone.</p>
           <p id="worthit-request-status" class="worthit-request-status" role="status" aria-live="polite"></p>
           <div class="worthit-request-form-actions">
             <button type="button" class="worthit-dialog-close-text" data-request-cancel>Cancelar</button>
