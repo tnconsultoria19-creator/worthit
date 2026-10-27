@@ -5,25 +5,28 @@
     {
       id: "sites", number: "01", category: "LOCALIZAÇÃO",
       title: "Aquisição de Sites & Inteligência de Localização",
-      image: "https://images.openai.com/static-rsc-4/IAt8KKE5yPNH6xchWF4s_OfPQ3SElJumRerTuE4sRyhLbJBocx88qPzoM_AsOh6ukKmftBEe_0YPfNR86l6q-vmDp4_aQq3SMOKyczTsYcg4Ri5uSwUlakvw8LtDWdchH8hXXAPoYGp7BmN2tYHnugZC_gWzpcfweQpDDsgw1Lk?purpose=inline",
-      alt: "Torre de telecomunicações e infraestrutura de rede",
-      intro: "Identificamos e avaliamos locais para telecomunicações, expansão comercial e projectos de desenvolvimento.",
-      detail: "Organizamos informação relevante para o cliente avaliar opções e decidir os próximos passos.",
-      bullets: ["Pesquisa e identificação de locais", "Coordenação de viabilidade técnica e comercial", "Coordenação de due diligence e documentação", "Facilitação de negociações com proprietários e coordenação de múltiplos locais"]
+      image: "https://images.pexels.com/photos/13801685/pexels-photo-13801685.jpeg?auto=compress&dpr=1&h=750&w=1260",
+      cardTitle: "Localização de sites",
+      alt: "Duas pessoas a apertar as mãos, representando a coordenação com proprietários e parceiros.",
+      intro: "Procuramos terrenos, edifícios, rooftops e outros locais adequados ao projecto, incluindo pontos para telecomunicações.",
+      detail: "Reunimos informação disponível, requisitos e contactos para comparar opções. Estudos técnicos, avaliações formais e diligências específicas são definidos à parte.",
+      bullets: ["Pesquisa de terrenos, edifícios e rooftops", "Localização de sites para telecomunicações", "Levantamento inicial de informação e documentação", "Contacto e coordenação com proprietários"]
     },
     {
       id: "procurement", number: "02", category: "FORNECIMENTO", title: "Procurement & Sourcing",
-      image: "https://images.openai.com/static-rsc-4/Kx9LSxW9arpxSLfzyp7-o7dIJK090z-VWJSPELmhTE74v95yjNyf8QRXSq965NhOOUt2Mvr7WNuIVh1vSXpooL-sKO8TSU0CQQTIvrpvOypXfkr_UZiPSeUYhzZwUJqR8xmRsBEPCWT3prFopJ_X0c-rHcZOAl9UitxPerahtLk?purpose=inline",
-      alt: "Materiais e fornecimentos", intro: "Pesquisamos produtos, materiais e equipamentos, identificando fornecedores de acordo com os seus requisitos.",
-      detail: "Reunimos alternativas e cotações para ajudar a comparar opções. O fornecimento final e as condições são confirmados com os fornecedores.",
-      bullets: ["Materiais e equipamentos de construção", "Veículos, maquinaria e peças sobressalentes", "Equipamento de escritório e consumíveis", "Pesquisa de fornecedores, cotações e comparação de opções"]
+      image: "https://images.pexels.com/photos/4483860/pexels-photo-4483860.jpeg?auto=compress&dpr=1&h=750&w=1260",
+      cardTitle: "Produtos e fornecedores",
+      alt: "Trabalhadores a organizar mercadoria numa área de armazém.", intro: "Procuramos produtos, materiais e equipamentos com base nas especificações, quantidades, prazo e orçamento.",
+      detail: "Comparamos fornecedores e cotações quando disponíveis. Preços, stock, transporte e condições são confirmados antes da compra.",
+      bullets: ["Materiais e equipamentos de construção", "Veículos, maquinaria e peças sobressalentes", "Equipamento de escritório e consumíveis", "Pesquisa, cotações e comparação de fornecedores"]
     },
     {
       id: "expansion", number: "03", category: "NEGÓCIOS", title: "Instalação & Expansão de Negócios",
-      image: "https://images.openai.com/static-rsc-4/lOFBNZQ_nJ4Fzy31WwMCmY74BuKCqp5UJqqYUtyzcSLWXrw282YiqnUR8VURTvy3SFBvNsHVdnO6xroznPACXQIxTBq72B73lE8ix7uS1ViDJXed6q6vzfNN_Mr0wEykPgO0KspbYzvmeyTmyDbhNvTXqhZtHDWJa9BHuaHU8Aw?purpose=inline",
-      alt: "Espaço empresarial", intro: "Apoiamos empresas que pretendem estabelecer ou ampliar a sua presença em Angola.",
-      detail: "Reunimos informação de mercado e ajudamos a encontrar recursos operacionais adequados ao plano do cliente.",
-      bullets: ["Pesquisa de instalações e localizações", "Recolha de informação de mercado", "Identificação de fornecedores operacionais", "Coordenação de requisitos e serviços locais"]
+      image: "https://images.pexels.com/photos/14589851/pexels-photo-14589851.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=750&w=1260",
+      cardTitle: "Instalação e expansão",
+      alt: "Edifícios modernos numa zona urbana.", intro: "Apoiamos empresas que querem abrir uma operação, instalar instalações ou crescer em Angola.",
+      detail: "Coordenamos pesquisa local, fornecedores e contactos para organizar os passos acordados. Registos, licenças e serviços especializados dependem do âmbito e das entidades responsáveis.",
+      bullets: ["Pesquisa de instalações e zonas comerciais ou industriais", "Identificação de serviços locais necessários", "Contacto com fornecedores e prestadores", "Coordenação dos passos de entrada ou expansão"]
     },
   ];
 
@@ -34,8 +37,8 @@
   grid.innerHTML = services.map(service => `
     <button type="button" class="worthit-service-card" id="service-${service.id}" data-service-open="${service.id}" aria-haspopup="dialog" aria-label="Saber mais sobre ${escapeHtml(service.title)}">
       <span class="worthit-service-image"><img src="${escapeHtml(service.image)}" alt="${escapeHtml(service.alt)}" loading="lazy"></span>
-      <span class="worthit-service-caption">${escapeHtml(service.title)}</span>
-      <span class="worthit-service-action">SABER MAIS ↗</span>
+      <span class="worthit-service-caption">${escapeHtml(service.cardTitle || service.title)}</span>
+      <span class="worthit-service-action">VER O QUE INCLUI ↗</span>
     </button>
   `).join("");
 
@@ -58,7 +61,7 @@
       </div>
       <div class="worthit-dialog-body">
         <p id="worthit-dialog-detail" class="worthit-dialog-detail"></p>
-        <h3>O que podemos coordenar</h3>
+        <h3>O que está incluído</h3>
         <ul id="worthit-dialog-list" class="worthit-dialog-list"></ul>
       </div>
       <section class="worthit-service-request-wrap" id="worthit-service-request-wrap" hidden>

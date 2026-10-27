@@ -490,3 +490,11 @@ footer[data-purpose="site-footer"]>div>div:last-child{border-top-color:rgba(203,
 .worthit-footer-service-link{background:#14365B!important;border-color:#557391!important;border-radius:999px!important}
 .worthit-footer-service-link:hover{background:#1B456F!important;border-color:#9CB2C8!important}
 @media(max-width:640px){footer[data-purpose="site-footer"]{padding-top:42px!important}header[data-purpose="hero-container"] .worthit-hero-left{padding-left:24px!important;padding-right:24px!important}header[data-purpose="hero-container"] .worthit-hero-left h1{font-size:clamp(34px,9vw,44px)!important;line-height:1.12!important}}
+
+
+/* Black version of the subtle geometric textile used on the service band and footer. */
+:root{--worthit-navy:#111111;--worthit-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23434343' stroke-width='1.25'%3E%3Cpath d='M48 4 68 24 48 44 28 24Z M48 15 57 24 48 33 39 24Z M4 48 24 28 44 48 24 68Z M52 48 72 28 92 48 72 68Z M48 52 68 72 48 92 28 72Z M39 72 48 63 57 72 48 81Z M0 0 12 12 0 24 M96 0 84 12 96 24 M0 72 12 84 0 96 M96 72 84 84 96 96'/%3E%3C/g%3E%3C/svg%3E")}
+[data-purpose="services-overview"].worthit-service-strip{background-color:#111!important;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),var(--worthit-pattern)!important;border-top-color:#333!important}
+footer[data-purpose="site-footer"]{background-color:#111!important;background-image:linear-gradient(rgba(0,0,0,.91),rgba(0,0,0,.94)),var(--worthit-pattern)!important;border-top-color:#333!important}
+.worthit-footer-service-link{background:#222!important;border-color:#595959!important}
+.worthit-footer-service-link:hover{background:#333!important;border-color:#999!important}
