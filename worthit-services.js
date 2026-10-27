@@ -205,4 +205,53 @@
   dialog.addEventListener("click", event => {
     if (event.target === dialog) dialog.close();
   });
+
+  // General enquiry form directly below the five process steps.
+  const generalForm = document.getElementById("worthit-general-request-form");
+  if (generalForm) {
+    const generalStatus = document.getElementById("worthit-general-request-status");
+    const generalSubmit = document.getElementById("worthit-general-request-submit");
+    generalForm.addEventListener("submit", async event => {
+      event.preventDefault();
+      generalStatus.textContent = "";
+      generalStatus.className = "worthit-request-status";
+      const data = Object.fromEntries(new FormData(generalForm).entries());
+      if (!String(data.email || "").trim() && !String(data.phone || "").trim()) {
+        generalStatus.textContent = "Indique pelo menos um contacto: email ou telefone.";
+        generalStatus.classList.add("is-error");
+        return;
+      }
+      generalSubmit.disabled = true;
+      generalSubmit.setAttribute("aria-busy", "true");
+      generalSubmit.textContent = "A enviar...";
+      try {
+        const response = await fetch("https://worthit.tnconsultoria19.workers.dev/api/service-requests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            service: data.service,
+            name: data.name,
+            company: data.company,
+            email: data.email,
+            phone: data.phone,
+            location: data.location,
+            details: data.details
+          })
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "Não foi possível registar o pedido.");
+        generalStatus.textContent = "Pedido registado com sucesso. Referência: " + result.id + ".";
+        generalStatus.classList.add("is-success");
+        generalForm.reset();
+        generalSubmit.textContent = "Pedido enviado ✓";
+        generalSubmit.removeAttribute("aria-busy");
+      } catch (error) {
+        generalStatus.textContent = error.message || "Não foi possível enviar o pedido. Tente novamente.";
+        generalStatus.classList.add("is-error");
+        generalSubmit.disabled = false;
+        generalSubmit.removeAttribute("aria-busy");
+        generalSubmit.textContent = "Tentar novamente ↗";
+      }
+    });
+  }
 })();

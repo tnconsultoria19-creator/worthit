@@ -101,7 +101,7 @@
     opacity: 1 !important;
   }
 </style>
-<link rel="stylesheet" href="worthit-services.css?v=20261027d">
+<link rel="stylesheet" href="worthit-services.css?v=20261027e">
 </head>
 <body class="bg-white text-neutral-800 font-sans antialiased selection:bg-neutral-800 selection:text-white">
 <a class="worthit-skip-link" href="#about">Saltar para o conteúdo</a>
@@ -255,6 +255,58 @@
       <article class="worthit-process-step"><span>04</span><h3>Opções e custos</h3><p>Apresentamos alternativas, preços disponíveis e próximos passos.</p></article>
       <article class="worthit-process-step"><span>05</span><h3>Coordenação</h3><p>Se aprovar, acompanhamos os contactos e as tarefas acordadas.</p></article>
     </div>
+    <div class="worthit-process-inquiry" id="pedido">
+      <div class="worthit-process-inquiry-copy">
+        <span class="worthit-inquiry-eyebrow">VAMOS COMEÇAR</span>
+        <h3>Tem um pedido para a WorthIt?</h3>
+        <p>Escolha a área, conte-nos o que precisa e indique como podemos entrar em contacto. A nossa equipa analisará o pedido.</p>
+      </div>
+      <form id="worthit-general-request-form" class="worthit-general-request-form">
+        <div class="worthit-general-request-grid">
+          <div class="worthit-request-field">
+            <label for="worthit-general-service">Em que podemos ajudar? *</label>
+            <select id="worthit-general-service" name="service" required>
+              <option value="" selected disabled>Escolha uma área</option>
+              <option value="Aquisição de Sites & Inteligência de Localização">Aquisição de sites / localização</option>
+              <option value="Procurement & Sourcing">Produtos e fornecedores</option>
+              <option value="Instalação & Expansão de Negócios">Instalação ou expansão de negócios</option>
+              <option value="Parceiros & Fornecedores">Parceiros e fornecedores</option>
+              <option value="Facilitação de Projectos">Coordenação de projecto</option>
+              <option value="Outro pedido">Outro pedido</option>
+            </select>
+          </div>
+          <div class="worthit-request-field">
+            <label for="worthit-general-name">Nome completo *</label>
+            <input id="worthit-general-name" name="name" autocomplete="name" required maxlength="160">
+          </div>
+          <div class="worthit-request-field">
+            <label for="worthit-general-company">Empresa</label>
+            <input id="worthit-general-company" name="company" autocomplete="organization" maxlength="180">
+          </div>
+          <div class="worthit-request-field">
+            <label for="worthit-general-location">Localização do projecto</label>
+            <input id="worthit-general-location" name="location" maxlength="180" placeholder="Província, município ou país">
+          </div>
+          <div class="worthit-request-field">
+            <label for="worthit-general-email">Email</label>
+            <input id="worthit-general-email" name="email" type="email" autocomplete="email" maxlength="200">
+          </div>
+          <div class="worthit-request-field">
+            <label for="worthit-general-phone">Telefone / WhatsApp</label>
+            <input id="worthit-general-phone" name="phone" type="tel" autocomplete="tel" maxlength="60">
+          </div>
+          <div class="worthit-request-field full">
+            <label for="worthit-general-details">O que precisa? *</label>
+            <textarea id="worthit-general-details" name="details" rows="4" required maxlength="4000" placeholder="Pode indicar requisitos, quantidades, orçamento ou prazo, se já os conhecer."></textarea>
+          </div>
+        </div>
+        <p class="worthit-request-hint">Indique pelo menos um contacto: email ou telefone.</p>
+        <p id="worthit-general-request-status" class="worthit-request-status" role="status" aria-live="polite"></p>
+        <div class="worthit-general-request-actions">
+          <button type="submit" class="worthit-dialog-request worthit-dialog-request-dark" id="worthit-general-request-submit">Enviar pedido ↗</button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 <!-- END: WorthItProcessSection -->
@@ -324,5 +376,5 @@
 </div>
 </footer>
 <!-- END: FooterSection -->
-<script src="worthit-services.js?v=20261027d" defer></script>
+<script src="worthit-services.js?v=20261027e" defer></script>
 </body></html>
